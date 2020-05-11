@@ -31,4 +31,4 @@ jobs:
         run: dotnet build -c Release
        
       - name: "Package & Deploy (Beta)"
-        run: powershell -File Nuget.ps1
+        run: powershell -File Nuget.ps1 -Suffix "-beta"
