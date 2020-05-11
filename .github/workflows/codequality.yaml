@@ -2,7 +2,7 @@ name: Code Quality
 
 on:
   push:
-    branches-ignore: release
+    branches-ignore: master
 
 jobs:
   quality:
