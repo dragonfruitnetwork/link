@@ -55,7 +55,10 @@ namespace DragonFruit.Link.Tests.Server
             //7. delete server
             Client.DeleteGameServer(serverInfo.Id);
             Thread.Sleep(250);
-            Assert.ThrowsException<ArgumentNullException>(() => Client.GetGameServers().Servers!.Single(x => x.Id == serverLoginInfo.Id));
+
+            var newServers = Client.GetGameServers().Servers;
+            if (newServers != null)
+                Assert.ThrowsException<ArgumentNullException>(() => newServers.Single(x => x.Id == serverLoginInfo.Id));
         }
     }
 }
