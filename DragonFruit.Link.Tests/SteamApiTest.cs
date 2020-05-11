@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using DragonFruit.Link.Tests.TestData;
 using DragonFruit.Link.Tests.TestData.Users;
 
@@ -16,7 +17,7 @@ namespace DragonFruit.Link.Tests
         private static SteamApiClient _client;
         private static IEnumerable<ITestUser> _testUsers;
 
-        public SteamApiClient Client => _client ??= new SteamApiClient(Environment.GetEnvironmentVariable("steam", EnvironmentVariableTarget.User));
+        public SteamApiClient Client => _client ??= new SteamApiClient(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? Environment.GetEnvironmentVariable("steam", EnvironmentVariableTarget.User) : Environment.GetEnvironmentVariable("steam"));
         public IEnumerable<ITestUser> Users => _testUsers ??= new ITestUser[] { new SteamCleanUser(), new SteamGameBannedUser() };
     }
 }

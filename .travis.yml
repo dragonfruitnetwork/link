@@ -19,6 +19,7 @@ jobs:
       - dotnet restore
       - dotnet build -c Release
     script: dotnet test
+    if: fork = false AND env(steam) IS present
     
   - name: "Code Quality"
     before_script:
