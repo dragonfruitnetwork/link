@@ -24,7 +24,7 @@ jobs:
   - name: "Code Quality"
     before_script:
       - choco install visualstudio2019-workload-netcorebuildtools
-      - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
+      - dotnet nuget add source https://api.nuget.org/v3/index.json -n "NuGet V3"
       - dotnet restore
       - dotnet build -c Release
     script:
@@ -36,6 +36,7 @@ jobs:
     before_script:
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
+      - dotnet nuget add source https://api.nuget.org/v3/index.json -n "NuGet V3"
       - dotnet restore
       - dotnet build -c Release
     script: powershell -File Nuget.ps1 -Suffix "-beta"
@@ -45,6 +46,7 @@ jobs:
     before_script:
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
+      - dotnet nuget add source https://api.nuget.org/v3/index.json -n "NuGet V3"
       - dotnet restore
       - dotnet build -c Release
     script: powershell -File Nuget.ps1
