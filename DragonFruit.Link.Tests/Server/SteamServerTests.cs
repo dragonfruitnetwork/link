@@ -58,7 +58,7 @@ namespace DragonFruit.Link.Tests.Server
 
             var newServers = Client.GetGameServers().Servers;
             if (newServers != null)
-                Assert.ThrowsException<ArgumentNullException>(() => newServers.Single(x => x.Id == serverLoginInfo.Id));
+                Assert.IsTrue(newServers.Count(x => x.Id == serverLoginInfo.Id) == 0);
         }
     }
 }
