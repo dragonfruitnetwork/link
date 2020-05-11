@@ -7,19 +7,22 @@ on:
     
 jobs:
   test:
+    
     runs-on: ubuntu-latest
-    if: ${{ secrets.steam != 0 && secrets.steam != "" }}
+    
     env:
       steam: ${{ secrets.steam }}
+  
     steps:
       - name: "Unit Tests"
         uses: ./.github/workflows/codequality.yaml
       
   beta:
     runs-on: windows-latest
-    if: ${{ secrets.nuget_key != 0 && secrets.nuget_key != "" }}
+    
     env:
       nuget_key: ${{ secrets.nuget_key }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
