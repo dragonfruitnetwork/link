@@ -24,4 +24,4 @@ jobs:
         run: nuget restore
       
       - name: Code Quality Check
-        run: DragonFruit.CodeCutter.exe
+        run: ".\\DragonFruit.CodeCutter.exe"
