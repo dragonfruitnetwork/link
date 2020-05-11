@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - master
-
+    
 jobs:
   beta:
     runs-on: windows-latest
+    if: ${{ env.nuget_key != 0 && env.nuget_key != "" }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
