@@ -3,12 +3,11 @@ name: Unit Tests
 on:
   push:
     branches-ignore: master
-    if: ${{ env.steam != "" && env.steam != 0 }}
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    if: ${{ env.steam != "" && env.steam != 0 }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
