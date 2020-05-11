@@ -1,4 +1,5 @@
 # DragonFruit Link API
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/29b1309caa754a5798dbba699ffab631)](https://app.codacy.com/gh/dragonfruitnetwork/Link?utm_source=github.com&utm_medium=referral&utm_content=dragonfruitnetwork/Link&utm_campaign=Badge_Grade_Dashboard)
 [![DragonFruit Discord](https://img.shields.io/discord/482528405292843018?label=Discord&style=popout)](https://discord.gg/VA26u5Z)
 
 ## Overview
