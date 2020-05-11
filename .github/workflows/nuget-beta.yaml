@@ -11,6 +11,7 @@ jobs:
     
     env:
       nuget_key: ${{ secrets.nuget_key }}
+      BUILD_NUMBER: ${{ github.run_number }}
 
     steps:
       - name: Checkout
