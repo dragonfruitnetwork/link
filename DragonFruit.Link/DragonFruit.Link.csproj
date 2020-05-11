@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>2020.5</Version>
+    <Authors>DragonFruit Network</Authors>
+    <Product>DragonFruit Link</Product>
+    <Description>Steam API for .NET</Description>
+    <Copyright>Copyright 2020 (C) DragonFruit Network</Copyright>
+    <PackageProjectUrl>https://github.com/dragonfruitnetwork/Link</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dragonfruitnetwork/Link</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>steam, api, dragonfruit</PackageTags>
+    <PackageLicenseFile>license.md</PackageLicenseFile>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/31821773</PackageIconUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DragonFruit.Common.Data" Version="2020.508.23-beta" />
+  </ItemGroup>
+
+</Project>
