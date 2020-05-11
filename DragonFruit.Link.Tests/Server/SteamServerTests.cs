@@ -57,8 +57,11 @@ namespace DragonFruit.Link.Tests.Server
             Thread.Sleep(250);
 
             var newServers = Client.GetGameServers().Servers;
+
             if (newServers != null)
+            {
                 Assert.IsTrue(newServers.Count(x => x.Id == serverLoginInfo.Id) == 0);
+            }
         }
     }
 }
