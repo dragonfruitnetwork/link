@@ -3,6 +3,8 @@ name: Code Quality
 on:
   push:
     branches-ignore: master
+  pull_request:
+    branches: "*"
 
 jobs:
   quality:
