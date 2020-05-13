@@ -20,13 +20,16 @@ namespace DragonFruit.Link.Economy.Objects
                 foreach (var item in value)
                 {
                     if (item.Key == "Unknown")
+                    {
                         continue;
+                    }
 
                     list.Add(item.Key, (uint)item.Value);
                 }
 
                 Prices = list;
             }
+            get => throw new NotSupportedException("Use Prices Field instead");
         }
 
         public IDictionary<string, uint> Prices { get; set; }
