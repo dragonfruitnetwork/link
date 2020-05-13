@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+    if: ${{ secrets.steam }} != 0 && ${{ secrets.steam }} != ""
     env:
       steam: ${{ secrets.steam }}
     steps:
