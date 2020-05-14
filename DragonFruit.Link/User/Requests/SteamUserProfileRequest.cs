@@ -1,8 +1,8 @@
 ﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
-using System;
 using System.Collections.Generic;
+using DragonFruit.Link.Exceptions;
 
 namespace DragonFruit.Link.User.Requests
 {
@@ -18,9 +18,8 @@ namespace DragonFruit.Link.User.Requests
         public SteamUserProfileRequest(ulong? user)
             : base(user ?? 0)
         {
-            //todo custom exception
             if (!user.HasValue)
-                throw new Exception("UserId Cannot be null");
+                throw new SteamBadRequestException();
         }
 
         public SteamUserProfileRequest(ulong user)

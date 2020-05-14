@@ -1,9 +1,9 @@
 ﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
-using System;
 using System.Collections.Generic;
 using DragonFruit.Common.Data;
+using DragonFruit.Link.Exceptions;
 using DragonFruit.Link.Store.Objects;
 using DragonFruit.Link.Store.Requests;
 using Newtonsoft.Json.Linq;
@@ -24,8 +24,7 @@ namespace DragonFruit.Link.Store.Extensions
 
             if (response == null)
             {
-                //todo custom exception
-                throw new Exception();
+                throw new SteamRequestFailedException();
             }
 
             response.Remove("status"); // the response value will screw up the loop below

@@ -35,13 +35,5 @@ namespace DragonFruit.Link.Library.Requests
 
         [QueryParameter("include_played_free_games")]
         public bool? IncludeFreeGames { get; set; }
-
-        //todo fix this part - currently getting 500x errors
-        //public IEnumerable<uint>? FilteredApps { get; set; }
-
-        // see https://developer.valvesoftware.com/wiki/Steam_Web_API#GetOwnedGames_.28v0001.29
-        //[QueryParameter("input_json")]
-        //private string? FilteredAppString => FilteredApps == null ? null : $"{{ \"appids_filter\": [ {string.Join(", ", FilteredApps)} ] }}";
     }
-
 }

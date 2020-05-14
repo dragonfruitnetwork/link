@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DragonFruit.Link.Exceptions;
 using DragonFruit.Link.User.Objects;
 using DragonFruit.Link.User.Requests;
 using DragonFruit.Link.User.Responses;
@@ -33,7 +34,7 @@ namespace DragonFruit.Link.User.Extensions
 
             //todo custom exception
             if (!steamId.HasValue)
-                throw new Exception("Url failed to resolve");
+                throw new SteamRequestFailedException();
 
             return GetUserProfile(client, steamId.Value);
         }
