@@ -28,7 +28,7 @@ namespace DragonFruit.Link.Tests.Economy
             }
         }
 
-        private void CheckItem(IEnumerable<SteamGameEconomyAsset> assets, ulong item, string name)
+        private static void CheckItem(IEnumerable<SteamGameEconomyAsset> assets, ulong item, string name)
         {
             Assert.AreEqual(assets.SingleOrDefault(x => x.ClassId == item)?.Name, name);
         }

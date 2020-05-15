@@ -1,6 +1,7 @@
 ﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
+using System;
 using System.Collections.Generic;
 using DragonFruit.Link.Economy.Objects;
 using DragonFruit.Link.Exceptions;
@@ -14,7 +15,7 @@ namespace DragonFruit.Link.Economy.Responses
         public IEnumerable<SteamGameEconomyAsset> Assets { get; set; }
 
         [JsonProperty("result")]
-        private JObject AsssetObject
+        private JObject AssetObject
         {
             set
             {
@@ -35,6 +36,7 @@ namespace DragonFruit.Link.Economy.Responses
 
                 Assets = list;
             }
+            get => throw new NotSupportedException("Use Assets IEnumerable");
         }
     }
 }
