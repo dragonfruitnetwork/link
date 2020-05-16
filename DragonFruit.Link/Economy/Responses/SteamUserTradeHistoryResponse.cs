@@ -16,7 +16,7 @@ namespace DragonFruit.Link.Economy.Responses
     public class SteamUserTradeHistoryContainer
     {
         [JsonProperty("more")]
-        public bool More { get; set; }
+        public bool? More { get; set; }
 
         [JsonProperty("total_trades")]
         public uint? TotalTrades { get; set; }

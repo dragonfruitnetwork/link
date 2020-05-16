@@ -29,7 +29,6 @@ namespace DragonFruit.Link.Economy.Objects
 
                 Prices = list;
             }
-            get => throw new NotSupportedException("Use Prices Field instead");
         }
 
         public IDictionary<string, uint> Prices { get; set; }

@@ -8,15 +8,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DragonFruit.Link.Tests.Economy
 {
     [TestClass]
-    public class SteamUserTradeHistoryTests : SteamApiTest
+    public class SteamUserTradeStatusTests : SteamApiTest
     {
         [TestMethod]
         public void UserTradeHistoryTest()
         {
-            var response = Client.GetTradeHistory(50);
+            var response = Client.GetTradeStatus(2117134991960769090).Trades.Single();
 
-            Assert.IsTrue(response.More!.Value);
-            Assert.AreEqual(response.Trades.Count(), 50);
+            Assert.IsTrue(response.Status == 3);
+            Assert.AreEqual(response.TradeStartedEpoch, 1527625970UL);
         }
     }
 }
