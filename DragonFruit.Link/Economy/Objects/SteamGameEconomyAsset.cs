@@ -2,7 +2,6 @@
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -61,7 +60,7 @@ namespace DragonFruit.Link.Economy.Objects
         [JsonProperty("tags_list")]
         public IEnumerable<SteamGameEconomyAssetTag> Tags { get; set; }
 
-        [JsonProperty("descriptions_list")]
+        [JsonProperty("descriptions")]
         public IEnumerable<SteamGameEconomyAssetDescription> Descriptions { get; set; }
 
         [JsonProperty("tags")]
@@ -77,23 +76,6 @@ namespace DragonFruit.Link.Economy.Objects
                 }
 
                 Tags = list;
-            }
-        }
-
-        [JsonProperty("descriptions")]
-        private JToken DescriptionsObject
-        {
-            set
-            {
-                var list = new List<SteamGameEconomyAssetDescription>(value.Count());
-
-                foreach (var jToken in value)
-                {
-                    var item = (JObject)jToken;
-                    list.Add(item.ToObject<SteamGameEconomyAssetDescription>());
-                }
-
-                Descriptions = list;
             }
         }
     }
