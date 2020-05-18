@@ -5,27 +5,27 @@ using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Link.Economy.Requests
 {
-    public class SteamUserTradeStatusRequest : SteamApiRequest, IHasOptionalLanguage, IHasOptionalDescription
+    public class SteamUserTradeOfferRequest : SteamApiRequest, IHasOptionalLanguage, IHasOptionalDescription
     {
         public override string Interface => "IEconService";
-        public override string InterfaceMethod => "GetTradeStatus";
+        public override string InterfaceMethod => "GetTradeOffer";
 
         public override int MethodVersion => 1;
 
         public override bool RequireApiKey => true;
 
-        public SteamUserTradeStatusRequest(ulong tradeId)
+        public SteamUserTradeOfferRequest(ulong offerId)
         {
-            TradeId = tradeId;
+            OfferId = offerId;
         }
 
-        [QueryParameter("tradeid")]
-        public ulong TradeId { get; set; }
-
-        [QueryParameter("get_descriptions")]
-        public bool? IncludeDescriptions { get; set; } = true;
+        [QueryParameter("tradeofferid")]
+        public ulong OfferId { get; set; }
 
         [QueryParameter("language")]
         public string? LanguageCode { get; set; }
+
+        [QueryParameter("get_descriptions")]
+        public bool? IncludeDescriptions { get; set; } = true;
     }
 }

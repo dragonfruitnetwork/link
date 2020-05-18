@@ -1,14 +1,14 @@
 ﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
-using DragonFruit.Link.User.Objects;
+using DragonFruit.Link.Economy.Objects;
 using Newtonsoft.Json;
 
-namespace DragonFruit.Link.User.Responses
+namespace DragonFruit.Link.Economy.Responses
 {
-    public class SteamUserLevelResponse : ISteamApiResponse
+    public class SteamUserTradeOffersSummaryResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamUserLevel? UserLevelInfo { get; set; }
+        public SteamUserTradeOffersSummary Summary { get; set; }
     }
 }

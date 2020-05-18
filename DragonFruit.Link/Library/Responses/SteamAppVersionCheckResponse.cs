@@ -9,6 +9,6 @@ namespace DragonFruit.Link.Library.Responses
     public class SteamAppVersionCheckResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamAppVersionInfo VersionInfo { get; set; }
+        public SteamAppVersionInfo? VersionInfo { get; set; }
     }
 }

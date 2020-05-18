@@ -10,7 +10,7 @@ namespace DragonFruit.Link.User.Responses
     public class SteamUserBadgesResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamUserBadgesInfo BadgeInfo { get; set; }
+        public SteamUserBadgesInfo? BadgeInfo { get; set; }
     }
 
     public class SteamUserBadgesInfo

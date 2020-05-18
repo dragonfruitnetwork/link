@@ -10,7 +10,7 @@ namespace DragonFruit.Link.Economy.Responses
     public class SteamUserTradeOffersResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamUserTradeOffersContainer Offers { get; set; }
+        public SteamUserTradeOffersContainer? Offers { get; set; }
     }
 
     public class SteamUserTradeOffersContainer
@@ -22,6 +22,6 @@ namespace DragonFruit.Link.Economy.Responses
         public IEnumerable<SteamUserTradeOffer>? Recieved { get; set; }
 
         [JsonProperty("descriptions")]
-        public IEnumerable<SteamGameEconomyAssetDescription> Descriptions { get; set; }
+        public IEnumerable<SteamGameEconomyAssetDescription>? Descriptions { get; set; }
     }
 }

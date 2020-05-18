@@ -6,7 +6,7 @@ using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Link.Economy.Requests
 {
-    public class SteamUserTradeOffersRequest : SteamApiRequest, IHasOptionalLanguage
+    public class SteamUserTradeOffersRequest : SteamApiRequest, IHasOptionalLanguage, IHasOptionalDescription
     {
         public override string Interface => "IEconService";
         public override string InterfaceMethod => "GetTradeOffers";
@@ -22,7 +22,7 @@ namespace DragonFruit.Link.Economy.Requests
         public bool? IncludeRecievedOffers { get; set; } = true;
 
         [QueryParameter("get_descriptions")]
-        public bool? IncludeItemDescriptions { get; set; } = true;
+        public bool? IncludeDescriptions { get; set; } = true;
 
         [QueryParameter("language")]
         public string? LanguageCode { get; set; }

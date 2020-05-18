@@ -6,7 +6,7 @@ using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Link.Economy.Requests
 {
-    public class SteamUserTradeHistoryRequest : SteamApiRequest, IHasOptionalLanguage
+    public class SteamUserTradeHistoryRequest : SteamApiRequest, IHasOptionalLanguage, IHasOptionalDescription
     {
         public override string Interface => "IEconService";
         public override string InterfaceMethod => "GetTradeHistory";
