@@ -60,7 +60,7 @@ namespace DragonFruit.Link.Economy.Objects
         [JsonProperty("tags_list")]
         public IEnumerable<SteamGameEconomyAssetTag> Tags { get; set; }
 
-        [JsonProperty("descriptions")]
+        [JsonProperty("description_list")]
         public IEnumerable<SteamGameEconomyAssetDescription> Descriptions { get; set; }
 
         [JsonProperty("tags")]
@@ -76,6 +76,22 @@ namespace DragonFruit.Link.Economy.Objects
                 }
 
                 Tags = list;
+            }
+        }
+
+        [JsonProperty("descriptions")]
+        private JObject DescriptionsObject
+        {
+            set
+            {
+                var list = new List<SteamGameEconomyAssetDescription>(value.Count);
+
+                foreach (var item in value)
+                {
+                    list.Add(item.Value.ToObject<SteamGameEconomyAssetDescription>());
+                }
+
+                Descriptions = list;
             }
         }
     }
