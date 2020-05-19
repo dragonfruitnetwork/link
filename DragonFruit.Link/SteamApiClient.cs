@@ -1,9 +1,9 @@
 ﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
-using System;
 using System.Net.Http;
 using DragonFruit.Common.Data;
+using DragonFruit.Link.Exceptions;
 
 namespace DragonFruit.Link
 {
@@ -55,8 +55,7 @@ namespace DragonFruit.Link
 
             if (!_apiKeySet)
             {
-                //todo custom exception
-                throw new Exception("No API key was specified when constructing the client.");
+                throw new SteamApiKeyMissingException();
             }
 
             request.ApiKey = _apiKey;
