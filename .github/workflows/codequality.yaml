@@ -1,8 +1,6 @@
 name: Code Quality
 
-on:
-  push:
-    branches-ignore: master
+on: [push, pull_request]
 
 jobs:
   quality:
