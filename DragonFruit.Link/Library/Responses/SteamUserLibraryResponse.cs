@@ -10,7 +10,7 @@ namespace DragonFruit.Link.Library.Responses
     public class SteamUserLibraryResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamUserLibraryContainer Library { get; set; }
+        public SteamUserLibraryContainer? Library { get; set; }
     }
 
     public class SteamUserLibraryContainer

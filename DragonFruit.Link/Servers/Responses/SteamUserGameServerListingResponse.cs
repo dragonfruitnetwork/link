@@ -9,6 +9,6 @@ namespace DragonFruit.Link.Servers.Responses
     public class SteamUserGameServerListingResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamUserGameServerListing ServerListing { get; set; }
+        public SteamUserGameServerListing? ServerListing { get; set; }
     }
 }

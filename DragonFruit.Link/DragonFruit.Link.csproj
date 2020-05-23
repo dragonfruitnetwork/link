@@ -11,13 +11,13 @@
     <RepositoryUrl>https://github.com/dragonfruitnetwork/Link</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>steam, api, dragonfruit</PackageTags>
-    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+    <PackageLicenseFile>../license.md</PackageLicenseFile>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/31821773</PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DragonFruit.Common.Data" Version="2020.508.23-beta" />
+    <PackageReference Include="DragonFruit.Common.Data" Version="2020.519.27-beta" />
   </ItemGroup>
 
 </Project>

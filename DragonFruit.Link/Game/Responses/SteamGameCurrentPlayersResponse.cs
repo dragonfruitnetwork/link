@@ -9,6 +9,6 @@ namespace DragonFruit.Link.Game.Responses
     public class SteamGameCurrentPlayersResponse
     {
         [JsonProperty("response")]
-        public SteamGameCurrentPlayersMetric TotalPlayerInfo { get; set; }
+        public SteamGameCurrentPlayersMetric? TotalPlayerInfo { get; set; }
     }
 }
