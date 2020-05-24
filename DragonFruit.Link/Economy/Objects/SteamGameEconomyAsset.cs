@@ -80,18 +80,38 @@ namespace DragonFruit.Link.Economy.Objects
         }
 
         [JsonProperty("descriptions")]
-        private JObject DescriptionsObject
+        private JToken DescriptionsObject
         {
             set
             {
-                var list = new List<SteamGameEconomyAssetDescription>(value.Count);
-
-                foreach (var item in value)
+                switch (value)
                 {
-                    list.Add(item.Value.ToObject<SteamGameEconomyAssetDescription>());
-                }
+                    case JArray arr:
+                    {
+                        var list = new List<SteamGameEconomyAssetDescription>(arr.Count);
 
-                Descriptions = list;
+                        foreach (var item in arr)
+                        {
+                            list.Add(item.ToObject<SteamGameEconomyAssetDescription>());
+                        }
+
+                        Descriptions = list;
+                        break;
+                    }
+
+                    case JObject obj:
+                    {
+                        var list = new List<SteamGameEconomyAssetDescription>(obj.Count);
+
+                        foreach (var item in obj)
+                        {
+                            list.Add(item.Value.ToObject<SteamGameEconomyAssetDescription>());
+                        }
+
+                        Descriptions = list;
+                        break;
+                    }
+                }
             }
         }
     }
