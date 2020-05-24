@@ -29,9 +29,9 @@ jobs:
     before_script: 
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
-    script:
       - dotnet restore
       - dotnet build -c Release
+    script:
       - powershell -File Nuget.ps1 -Suffix "-beta"
 
   - name: "NuGet Stable"
@@ -40,7 +40,7 @@ jobs:
     before_script:
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
-    script:
       - dotnet restore
       - dotnet build -c Release
+    script:
       - powershell -File Nuget.ps1
