@@ -12,12 +12,12 @@ stages:
     if: type = push AND fork = false AND env(nuget_key) IS present
     on:
       repo: dragonfruitnetwork/Link
+      tags: true
 
 jobs:
   include: 
   - stage: test
     name: "Unit Tests"
-
     os: linux
     dist: bionic
     language: csharp
@@ -28,18 +28,17 @@ jobs:
 
   - stage: deploy
     name: "NuGet Beta"
-    if: branch = master
+    if: branch = latest
     script:
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
       - dotnet restore
       - dotnet build -c Release
       - powershell -File Nuget.ps1 -Suffix "-beta"
-      - stage: deploy
 
   - name: "NuGet Stable"
-    on: 
-      tags: true
+    if: branch = master
+    stage: deploy
     script:
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force

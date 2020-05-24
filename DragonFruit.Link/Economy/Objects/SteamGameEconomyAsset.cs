@@ -1,7 +1,9 @@
 ﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -90,10 +92,7 @@ namespace DragonFruit.Link.Economy.Objects
                     {
                         var list = new List<SteamGameEconomyAssetDescription>(arr.Count);
 
-                        foreach (var item in arr)
-                        {
-                            list.Add(item.ToObject<SteamGameEconomyAssetDescription>());
-                        }
+                        list.AddRange(arr.Select(item => item.ToObject<SteamGameEconomyAssetDescription>()));
 
                         Descriptions = list;
                         break;
@@ -110,6 +109,11 @@ namespace DragonFruit.Link.Economy.Objects
 
                         Descriptions = list;
                         break;
+                    }
+
+                    default:
+                    {
+                        throw new NotSupportedException();
                     }
                 }
             }
