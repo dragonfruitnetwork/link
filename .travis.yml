@@ -26,9 +26,10 @@ jobs:
   - stage: deploy
     name: "NuGet Beta"
     if: branch = latest AND type = push AND fork = false
-    script:
+    before_script: 
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
+    script:
       - dotnet restore
       - dotnet build -c Release
       - powershell -File Nuget.ps1 -Suffix "-beta"
@@ -36,9 +37,10 @@ jobs:
   - name: "NuGet Stable"
     stage: deploy
     if: tag IS NOT blank AND fork = false
-    script:
+    before_script:
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
+    script:
       - dotnet restore
       - dotnet build -c Release
       - powershell -File Nuget.ps1
