@@ -10,8 +10,6 @@ stages:
     if: type = push AND env(steam) IS present
   - name: deploy
     if: type = push AND fork = false AND env(nuget_key) IS present
-    on:
-      tags: true
 
 jobs:
   include: 
@@ -36,8 +34,9 @@ jobs:
       - powershell -File Nuget.ps1 -Suffix "-beta"
 
   - name: "NuGet Stable"
-    if: branch = master
     stage: deploy
+    on:
+      tags: true
     script:
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
