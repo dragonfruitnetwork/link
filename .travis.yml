@@ -7,9 +7,9 @@ before_script:
 
 stages:
   - name: test
-    if: type = push AND env(steam) IS present
+    if: env(steam) IS present
   - name: deploy
-    if: type = push AND fork = false AND env(nuget_key) IS present
+    if: env(nuget_key) IS present
 
 jobs:
   include: 
@@ -25,7 +25,7 @@ jobs:
 
   - stage: deploy
     name: "NuGet Beta"
-    if: branch = latest
+    if: branch = latest AND type = push AND fork = false
     script:
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
@@ -35,8 +35,7 @@ jobs:
 
   - name: "NuGet Stable"
     stage: deploy
-    on:
-      tags: true
+    if: tag IS NOT blank AND fork = false
     script:
       - choco install visualstudio2019-workload-netcorebuildtools
       - powershell Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
