@@ -17,7 +17,12 @@ namespace DragonFruit.Link.Tests
         private static SteamApiClient _client;
         private static IEnumerable<ITestUser> _testUsers;
 
-        public SteamApiClient Client => _client ??= new SteamApiClient(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? Environment.GetEnvironmentVariable("steam", EnvironmentVariableTarget.User) : Environment.GetEnvironmentVariable("steam"));
-        public IEnumerable<ITestUser> Users => _testUsers ??= new ITestUser[] { new SteamCleanUser(), new SteamGameBannedUser() };
+        private const string VariableName = "steam";
+
+        protected static SteamApiClient Client => _client ??= new SteamApiClient(RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+            ? Environment.GetEnvironmentVariable(VariableName, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(VariableName, EnvironmentVariableTarget.Machine) ?? Environment.GetEnvironmentVariable(VariableName)
+            : Environment.GetEnvironmentVariable(VariableName));
+
+        protected static IEnumerable<ITestUser> Users => _testUsers ??= new ITestUser[] { new SteamCleanUser(), new SteamGameBannedUser() };
     }
 }

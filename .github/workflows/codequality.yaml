@@ -1,6 +1,9 @@
 name: Code Quality
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches:
+      - master
 
 jobs:
   quality:
@@ -9,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Install Dependencies (Chocolatey)
+      - name: Install Dependencies
         run: |
           choco install visualstudio2019-netcorebuildtools
           choco install nuget.commandline
