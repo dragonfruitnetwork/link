@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/dragonfruitnetwork/Link</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>steam, api, dragonfruit</PackageTags>
-    <PackageLicenseFile>../license.md</PackageLicenseFile>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/31821773</PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
