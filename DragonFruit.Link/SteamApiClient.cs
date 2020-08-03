@@ -36,22 +36,24 @@ namespace DragonFruit.Link
 
         protected override void ValidateRequest(ApiRequest requestData)
         {
-            if (requestData is SteamApiRequest steamRequest)
+            base.ValidateRequest(requestData);
+
+            if (!(requestData is SteamApiRequest steamRequest))
             {
-                if (!steamRequest.RequireApiKey)
-                {
-                    return;
-                }
-
-                if (!_apiKeySet)
-                {
-                    throw new SteamApiKeyMissingException();
-                }
-
-                steamRequest.ApiKey = _apiKey;
+                return;
             }
 
-            base.ValidateRequest(requestData);
+            if (!steamRequest.RequireApiKey)
+            {
+                return;
+            }
+
+            if (!_apiKeySet)
+            {
+                throw new SteamApiKeyMissingException();
+            }
+
+            steamRequest.ApiKey = _apiKey;
         }
     }
 }
