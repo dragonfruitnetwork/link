@@ -1,7 +1,7 @@
 ﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
-using System.Net.Http;
+using System.Globalization;
 using DragonFruit.Common.Data;
 using DragonFruit.Link.Exceptions;
 
@@ -14,51 +14,44 @@ namespace DragonFruit.Link
 
         #region Constructors
 
+        public SteamApiClient()
+            : base(CultureInfo.InvariantCulture) // creates a new ApiJsonSerializer
+        {
+        }
+
+        public SteamApiClient(string apiKey)
+            : this()
+        {
+            _apiKey = apiKey;
+            _apiKeySet = true;
+        }
+
         public SteamApiClient(string apiKey, string userAgent)
             : this(apiKey)
         {
             UserAgent = userAgent;
         }
 
-        public SteamApiClient(string apiKey)
-        {
-            _apiKey = apiKey;
-            _apiKeySet = true;
-        }
-
-        public SteamApiClient()
-        {
-            // this should only be for non-auth requiring things
-            _apiKeySet = false;
-        }
-
         #endregion
 
-        public T Perform<T>(SteamApiRequest request) where T : class/*, ISteamApiResponse*/
+        protected override void ValidateRequest(ApiRequest requestData)
         {
-            CheckAuthorization(request);
-            return base.Perform<T>(request);
-        }
-
-        public HttpResponseMessage Perform(SteamApiRequest request)
-        {
-            CheckAuthorization(request);
-            return base.Perform(request);
-        }
-
-        private void CheckAuthorization(SteamApiRequest request)
-        {
-            if (!request.RequireApiKey)
+            if (requestData is SteamApiRequest steamRequest)
             {
-                return;
+                if (!steamRequest.RequireApiKey)
+                {
+                    return;
+                }
+
+                if (!_apiKeySet)
+                {
+                    throw new SteamApiKeyMissingException();
+                }
+
+                steamRequest.ApiKey = _apiKey;
             }
 
-            if (!_apiKeySet)
-            {
-                throw new SteamApiKeyMissingException();
-            }
-
-            request.ApiKey = _apiKey;
+            base.ValidateRequest(requestData);
         }
     }
 }
