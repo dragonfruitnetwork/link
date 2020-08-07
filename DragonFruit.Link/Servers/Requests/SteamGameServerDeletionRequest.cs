@@ -8,8 +8,8 @@ namespace DragonFruit.Link.Servers.Requests
 {
     public class SteamGameServerDeletionRequest : SteamApiRequest, IForSteamUser
     {
-        public override Methods Method => Methods.Post;
-        public override DataTypes DataType => DataTypes.Encoded;
+        protected override Methods Method => Methods.Post;
+        protected override BodyType BodyType => BodyType.Encoded;
 
         public override string Interface => "IGameServersService";
         public override string InterfaceMethod => "DeleteAccount";
