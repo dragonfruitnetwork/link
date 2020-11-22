@@ -17,7 +17,7 @@ namespace DragonFruit.Link.Economy.Extensions
         public static SteamUserTradeHistoryContainer GetTradeHistory(this SteamApiClient client, uint maxEntries)
         {
             var request = new SteamUserTradeHistoryRequest(maxEntries);
-            return client.Perform<SteamUserTradeHistoryResponse>(request).History;
+            return client.Perform<SteamUserTradeHistoryResponse>(request)?.History;
         }
     }
 }

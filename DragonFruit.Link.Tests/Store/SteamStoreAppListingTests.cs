@@ -13,6 +13,7 @@ namespace DragonFruit.Link.Tests.Store
         [TestMethod]
         public void GetSteamStoreAppListingTest()
         {
+            CheckPublisher(216938, null);
             CheckPublisher(SteamApps.RainbowSix, "Ubisoft");
             CheckPublisher(SteamApps.CounterStrike, "Valve");
             CheckPublisher(SteamApps.TeamFortress2, "Valve");

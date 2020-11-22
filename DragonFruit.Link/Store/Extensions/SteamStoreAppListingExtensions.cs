@@ -2,7 +2,6 @@
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
 using DragonFruit.Common.Data;
-using DragonFruit.Link.Exceptions;
 using DragonFruit.Link.Store.Objects;
 using DragonFruit.Link.Store.Requests;
 using Newtonsoft.Json.Linq;
@@ -22,13 +21,7 @@ namespace DragonFruit.Link.Store.Extensions
             var request = new SteamStoreAppListingRequest(appId);
             var response = client.Perform<JObject>(request);
 
-            if (response == null)
-            {
-                //todo custom exception
-                throw new SteamRequestFailedException();
-            }
-
-            return response[appId.ToString()]!["data"]!.ToObject<SteamStoreAppListing>();
+            return response[appId.ToString()]?["data"]?.ToObject<SteamStoreAppListing>();
         }
     }
 }
