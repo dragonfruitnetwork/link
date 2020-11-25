@@ -2,6 +2,7 @@
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
 using System.Collections.Generic;
+using System.Threading;
 using DragonFruit.Common.Data;
 using DragonFruit.Link.Library.Objects;
 using DragonFruit.Link.Library.Requests;
@@ -18,11 +19,12 @@ namespace DragonFruit.Link.Library.Extensions
         /// Use this with caution - it returns only the AppId and the Name. If you want to limit entries use <see cref="SteamStoreListingExtensions.GetStoreApps"/>
         /// </summary>
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>Every single Steam App published as a <see cref="SteamBasicSteamApp"/></returns>
-        public static IEnumerable<SteamBasicSteamApp> GetAllAppNameAndIds(this ApiClient client)
+        public static IEnumerable<SteamBasicSteamApp> GetAllAppNameAndIds(this ApiClient client, CancellationToken token = default)
         {
             var request = new SteamAppsListingRequest();
-            return client.Perform<SteamAppsListingResponse>(request).Listing.Apps;
+            return client.Perform<SteamAppsListingResponse>(request, token).Listing.Apps;
         }
     }
 }

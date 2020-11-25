@@ -4,6 +4,7 @@
 using DragonFruit.Link.Servers.Objects;
 using DragonFruit.Link.Servers.Requests;
 using DragonFruit.Link.Servers.Responses;
+using System.Threading;
 
 namespace DragonFruit.Link.Servers.Extensions
 {
@@ -13,11 +14,12 @@ namespace DragonFruit.Link.Servers.Extensions
         /// Get the API key owner's steam game servers
         /// </summary>
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The API key owner's account standing and any server they have registered, for all games</returns>
-        public static SteamUserGameServerListing GetGameServers(this SteamApiClient client)
+        public static SteamUserGameServerListing GetGameServers(this SteamApiClient client, CancellationToken token = default)
         {
             var request = new SteamUserGameServerListingRequest();
-            return client.Perform<SteamUserGameServerListingResponse>(request).ServerListing;
+            return client.Perform<SteamUserGameServerListingResponse>(request, token).ServerListing;
         }
     }
 }

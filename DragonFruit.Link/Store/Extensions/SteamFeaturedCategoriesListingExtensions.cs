@@ -2,6 +2,7 @@
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
 using System.Collections.Generic;
+using System.Threading;
 using DragonFruit.Common.Data;
 using DragonFruit.Link.Exceptions;
 using DragonFruit.Link.Store.Objects;
@@ -16,11 +17,12 @@ namespace DragonFruit.Link.Store.Extensions
         /// Get the items currently listed under the featured categories
         /// </summary>
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="SteamFeaturedCategory"/></returns>
-        public static IEnumerable<SteamFeaturedCategory> GetFeaturedCategories(this ApiClient client)
+        public static IEnumerable<SteamFeaturedCategory> GetFeaturedCategories(this ApiClient client, CancellationToken token = default)
         {
             var request = new SteamFeaturedCategoriesListingRequest();
-            var response = client.Perform<JObject>(request);
+            var response = client.Perform<JObject>(request, token);
 
             if (response == null)
             {

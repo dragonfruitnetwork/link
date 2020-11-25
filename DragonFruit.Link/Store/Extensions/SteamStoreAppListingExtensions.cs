@@ -6,6 +6,7 @@ using DragonFruit.Link.Exceptions;
 using DragonFruit.Link.Store.Objects;
 using DragonFruit.Link.Store.Requests;
 using Newtonsoft.Json.Linq;
+using System.Threading;
 
 namespace DragonFruit.Link.Store.Extensions
 {
@@ -16,11 +17,12 @@ namespace DragonFruit.Link.Store.Extensions
         /// </summary>
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="appId">The App Id to get the listing for</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>A <see cref="SteamStoreAppListing"/></returns>
-        public static SteamStoreAppListing GetStoreListing(this ApiClient client, uint appId)
+        public static SteamStoreAppListing GetStoreListing(this ApiClient client, uint appId, CancellationToken token = default)
         {
             var request = new SteamStoreAppListingRequest(appId);
-            var response = client.Perform<JObject>(request);
+            var response = client.Perform<JObject>(request, token);
 
             if (response == null)
             {
