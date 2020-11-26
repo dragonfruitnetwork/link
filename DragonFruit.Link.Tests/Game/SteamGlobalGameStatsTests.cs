@@ -3,6 +3,8 @@
 
 using DragonFruit.Link.Game.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DragonFruit.Link.Tests.Game
 {
@@ -12,10 +14,10 @@ namespace DragonFruit.Link.Tests.Game
         [TestMethod]
         public void GetSteamGlobalGameStatsTest()
         {
-            var metric = "global.map.emp_isle";
+            var metric = new List<string>() { "global.map.emp_isle" };
             var stat = Client.GetGlobalGameStats(17740, metric);
 
-            Assert.IsTrue(stat[metric] > 42510619710);
+            Assert.IsTrue(stat[metric.Single()] > 42510619710);
         }
     }
 }
