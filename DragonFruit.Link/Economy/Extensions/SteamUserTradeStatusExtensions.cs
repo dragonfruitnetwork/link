@@ -3,6 +3,7 @@
 
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Economy.Responses;
+using System.Threading;
 
 namespace DragonFruit.Link.Economy.Extensions
 {
@@ -13,11 +14,12 @@ namespace DragonFruit.Link.Economy.Extensions
         /// </summary>
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="tradeId">Id of trade to return</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>Returns the trade and descriptions of the items included in said trade</returns>
-        public static SteamUserTradeHistoryContainer GetTradeStatus(this SteamApiClient client, ulong tradeId)
+        public static SteamUserTradeHistoryContainer GetTradeStatus(this SteamApiClient client, ulong tradeId, CancellationToken token = default)
         {
             var request = new SteamUserTradeStatusRequest(tradeId);
-            return client.Perform<SteamUserTradeStatusResponse>(request).History;
+            return client.Perform<SteamUserTradeStatusResponse>(request, token).History;
         }
     }
 }

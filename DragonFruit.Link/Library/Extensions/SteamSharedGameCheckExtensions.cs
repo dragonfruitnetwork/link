@@ -3,6 +3,7 @@
 
 using DragonFruit.Link.Library.Requests;
 using DragonFruit.Link.Library.Responses;
+using System.Threading;
 
 namespace DragonFruit.Link.Library.Extensions
 {
@@ -14,12 +15,13 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="appId">The App Id to check</param>
         /// <param name="steamId">The SteamID64 of the User "borrowing" the game</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The Game Owners' SteamID64</returns>
         /// <remarks>The user must be currently playing the game for this to return a valid result. If 0 is returned the user either owns the game or they aren't currently playing it.</remarks>
-        public static ulong GetSharedGameOwner(this SteamApiClient client, uint appId, ulong steamId)
+        public static ulong GetSharedGameOwner(this SteamApiClient client, uint appId, ulong steamId, CancellationToken token = default)
         {
             var request = new SteamSharedGameCheckRequest(steamId, appId);
-            return client.Perform<SteamSharedGameCheckResponse>(request).LenderInfo.LenderSteamId;
+            return client.Perform<SteamSharedGameCheckResponse>(request, token).LenderInfo.LenderSteamId;
         }
     }
 }

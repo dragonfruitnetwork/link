@@ -4,6 +4,7 @@
 using DragonFruit.Link.Economy.Objects;
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Economy.Responses;
+using System.Threading;
 
 namespace DragonFruit.Link.Economy.Extensions
 {
@@ -14,11 +15,12 @@ namespace DragonFruit.Link.Economy.Extensions
         /// </summary>
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="tradeId">The id of the trade</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The offer information and descriptions, or null if the trade id is invalid/party has no involvement</returns>
-        public static SteamUserTradeOffer GetTradeOffer(this SteamApiClient client, ulong tradeId)
+        public static SteamUserTradeOffer GetTradeOffer(this SteamApiClient client, ulong tradeId, CancellationToken token = default)
         {
             var request = new SteamUserTradeOfferRequest(tradeId);
-            return client.Perform<SteamUserTradeOfferResponse>(request).OfferLookupResult?.Offer;
+            return client.Perform<SteamUserTradeOfferResponse>(request, token).OfferLookupResult?.Offer;
         }
     }
 }
