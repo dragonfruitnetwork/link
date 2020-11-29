@@ -1,9 +1,8 @@
-﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
+// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
 using DragonFruit.Link.Game.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DragonFruit.Link.Tests.Game
