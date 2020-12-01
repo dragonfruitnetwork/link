@@ -23,7 +23,7 @@ namespace DragonFruit.Link.Economy.Requests
         public ulong OfferId { get; set; }
 
         [QueryParameter("language")]
-        public string? LanguageCode { get; set; }
+        public string LanguageCode { get; set; }
 
         [QueryParameter("get_descriptions")]
         public bool? IncludeDescriptions { get; set; } = true;

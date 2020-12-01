@@ -18,10 +18,10 @@ namespace DragonFruit.Link.Economy.Objects
         public string SteamTradeId { get; set; }
 
         [JsonProperty("time_init")]
-        public ulong TradeStartedEpoch { get; set; }
+        public long TradeStartedEpoch { get; set; }
 
         [JsonIgnore]
-        public DateTimeOffset TradeStarted => DateTimeOffset.UnixEpoch.AddSeconds(TradeStartedEpoch);
+        public DateTimeOffset TradeStarted => DateTimeOffset.FromUnixTimeSeconds(TradeStartedEpoch);
 
         // todo int -> enum
         [JsonProperty("status")]

@@ -29,6 +29,6 @@ namespace DragonFruit.Link.User.Requests
         public uint AppId { get; set; }
 
         [QueryParameter("l")]
-        public string? LanguageCode { get; set; }
+        public string LanguageCode { get; set; }
     }
 }

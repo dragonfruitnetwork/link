@@ -15,7 +15,7 @@ namespace DragonFruit.Link.Tests.Economy
         {
             var response = Client.GetTradeHistory(50);
 
-            Assert.IsTrue(response.More!.Value);
+            Assert.IsTrue(response.More.Value);
             Assert.AreEqual(response.Trades.Count(), 50);
         }
     }

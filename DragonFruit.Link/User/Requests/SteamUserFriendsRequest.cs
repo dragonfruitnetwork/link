@@ -32,7 +32,7 @@ namespace DragonFruit.Link.User.Requests
         public ulong Id { get; set; }
 
         [QueryParameter("relationship")]
-        private string? UserRelationString => Relation.ToString()?.ToLowerInvariant();
+        private string UserRelationString => Relation.ToString()?.ToLowerInvariant();
 
         public SteamUserRelation? Relation { get; set; }
     }

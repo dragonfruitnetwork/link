@@ -15,9 +15,9 @@ namespace DragonFruit.Link.Economy.Requests
 
         public override bool RequireApiKey => true;
 
-        public DateTimeOffset LastVisted { get; set; }
+        public DateTimeOffset LastVisted { get; set; } = DateTimeOffset.Now.AddDays(-7);
 
         [QueryParameter("time_last_visit")]
-        private double LastVisitedEpoch => LastVisted.Subtract(DateTimeOffset.UnixEpoch).TotalSeconds;
+        private double? LastVisitedEpoch => EpochFromDate(LastVisted);
     }
 }

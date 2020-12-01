@@ -27,9 +27,9 @@ namespace DragonFruit.Link.Servers.Objects
         public bool Expired { get; set; }
 
         [JsonProperty("rt_last_logon")]
-        public ulong LastLogonEpoch { get; set; }
+        public long LastLogonEpoch { get; set; }
 
         [JsonIgnore]
-        public DateTimeOffset LastLogon => DateTimeOffset.UnixEpoch.AddSeconds(LastLogonEpoch);
+        public DateTimeOffset LastLogon => DateTimeOffset.FromUnixTimeSeconds(LastLogonEpoch);
     }
 }

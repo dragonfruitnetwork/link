@@ -16,7 +16,7 @@ namespace DragonFruit.Link.Tests.Economy
             var response = Client.GetTradeStatus(2117134991960769090).Trades.Single();
 
             Assert.IsTrue(response.Status == 3);
-            Assert.AreEqual(response.TradeStartedEpoch, 1527625970UL);
+            Assert.AreEqual(response.TradeStartedEpoch, 1527625970L);
         }
     }
 }

@@ -2,6 +2,7 @@
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
 using System.Collections.Generic;
+using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Parameters;
 
 // ReSharper disable InconsistentNaming
@@ -22,9 +23,7 @@ namespace DragonFruit.Link.Servers.Requests
             SteamIds = steamIds;
         }
 
+        [QueryParameter("server_steamids", CollectionConversionMode.Concatenated)]
         public IEnumerable<string> SteamIds { get; set; }
-
-        [QueryParameter("server_steamids")]
-        private string SteamIdString => string.Join(',', SteamIds);
     }
 }

@@ -15,12 +15,12 @@ namespace DragonFruit.Link.Library.Objects
         public string Name { get; set; }
 
         [JsonProperty("last_modified")]
-        public ulong LastChangedEpoch { get; set; }
-
-        [JsonIgnore]
-        public DateTimeOffset LastChanged => DateTimeOffset.UnixEpoch.AddSeconds(LastChangedEpoch);
+        public long LastChangedEpoch { get; set; }
 
         [JsonProperty("price_change_number")]
         public ulong PriceChangeNumber { get; set; }
+
+        [JsonIgnore]
+        public DateTimeOffset LastChanged => DateTimeOffset.FromUnixTimeSeconds(LastChangedEpoch);
     }
 }

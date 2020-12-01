@@ -18,14 +18,15 @@ namespace DragonFruit.Link.Game.Extensions
             var request = new SteamGlobalGameStatsRequest(appId, stats);
             var response = client.Perform<JObject>(request, token)["response"]!;
 
-            if (!(bool)response!["result"])
+            if ((bool?)response?["result"] != true)
             {
                 throw new Exception("Request failed");
             }
 
-            var data = response["globalstats"]!;
+            // suppress null as we know the result was valid
+            var data = response!["globalstats"];
 
-            return stats.ToDictionary(item => item, item => Convert.ToDouble(data![item]!["total"]));
+            return stats.ToDictionary(item => item, item => Convert.ToDouble(data[item]["total"]));
         }
     }
 }

@@ -22,9 +22,9 @@ namespace DragonFruit.Link.Store.Objects
         public uint PercentageDiscount { get; set; }
 
         [JsonProperty("initial_formatted")]
-        public string? InitialPriceFormatted { get; set; }
+        public string InitialPriceFormatted { get; set; }
 
         [JsonProperty("final_formatted")]
-        public string? FinalPriceFormatted { get; set; }
+        public string FinalPriceFormatted { get; set; }
     }
 }

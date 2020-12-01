@@ -29,18 +29,18 @@ namespace DragonFruit.Link.Tests.Server
             Assert.IsFalse(string.IsNullOrWhiteSpace(serverLoginInfo.ServerToken));
 
             //2. check info
-            var serverInfo = Client.GetGameServers().Servers!.Single(x => x.Id == serverLoginInfo.Id);
+            var serverInfo = Client.GetGameServers().Servers.Single(x => x.Id == serverLoginInfo.Id);
 
             Assert.AreEqual(appId, serverInfo.AppId);
             Assert.AreEqual(firstMemo, serverInfo.Memo);
-            Assert.AreEqual(0UL, serverInfo.LastLogonEpoch);
+            Assert.AreEqual(0L, serverInfo.LastLogonEpoch);
 
             Assert.IsFalse(serverInfo.Expired);
 
             //3. change memo and verify
             Client.ChangeServerMemo(serverInfo.Id, secondMemo);
             Thread.Sleep(250);
-            Assert.AreEqual(secondMemo, Client.GetGameServers().Servers!.Single(x => x.Id == serverLoginInfo.Id).Memo);
+            Assert.AreEqual(secondMemo, Client.GetGameServers().Servers.Single(x => x.Id == serverLoginInfo.Id).Memo);
 
             //4. check login token query
             Assert.AreEqual(serverInfo.Id, Client.GetServerLoginTokenInfo(serverInfo.ServerToken).Id);

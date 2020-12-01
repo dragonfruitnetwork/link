@@ -3,7 +3,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Link.Game.Requests
@@ -33,24 +33,9 @@ namespace DragonFruit.Link.Game.Requests
         public uint AppId { get; set; }
 
         [QueryParameter("count")]
-        private string CompiledQueries
-        {
-            get
-            {
-                var stringBuilder = new StringBuilder();
-                var totalQueries = Queries.Count();
+        public int QueryCount => Queries.Count();
 
-                stringBuilder.Append(totalQueries);
-
-                for (var i = 0; i < totalQueries; i++)
-                {
-                    stringBuilder.Append($"&name[{i}]={Queries.ElementAt(i)}");
-                }
-
-                return stringBuilder.ToString();
-            }
-        }
-
+        [QueryParameter("name", CollectionConversionMode.Ordered)]
         public IEnumerable<string> Queries { get; set; }
     }
 }

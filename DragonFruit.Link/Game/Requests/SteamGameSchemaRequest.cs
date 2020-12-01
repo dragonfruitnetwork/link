@@ -25,6 +25,6 @@ namespace DragonFruit.Link.Game.Requests
         public uint AppId { get; set; }
 
         [QueryParameter("l")]
-        public string? LanguageCode { get; set; }
+        public string LanguageCode { get; set; }
     }
 }

@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Parameters;
 
 #nullable enable
@@ -35,7 +36,7 @@ namespace DragonFruit.Link.News.Requests
             Count = limit;
             MaxDescriptionLength = maxDescriptionLength;
         }
-        
+
         [QueryParameter("appid")]
         public uint AppId { get; set; }
 
@@ -45,28 +46,15 @@ namespace DragonFruit.Link.News.Requests
         [QueryParameter("maxlength")]
         public uint? MaxDescriptionLength { get; set; }
 
-        [QueryParameter("tags")]
-        private string? CompiledTags => Tags != null ? string.Join(',', Tags!) : null;
+        public DateTimeOffset? EarlierThan { get; set; }
 
-        [QueryParameter("feeds")]
-        private string? CompiledFeeds => Feeds != null ? string.Join(',', Feeds!) : null;
+        [QueryParameter("feeds", CollectionConversionMode.Concatenated)]
+        public IEnumerable<string> Feeds { get; set; }
+
+        [QueryParameter("tags", CollectionConversionMode.Concatenated)]
+        public IEnumerable<string> Tags { get; set; }
 
         [QueryParameter("enddate")]
-        private double? Epoch
-        {
-            get
-            {
-                if (EarlierThan is { } dto)
-                    return dto.Subtract(DateTimeOffset.UnixEpoch).TotalSeconds;
-
-                return null;
-            }
-        }
-
-        public IEnumerable<string>? Feeds { get; set; }
-
-        public IEnumerable<string>? Tags { get; set; }
-
-        public DateTimeOffset? EarlierThan { get; set; }
+        private double? Epoch => EpochFromDate(EarlierThan);
     }
 }
