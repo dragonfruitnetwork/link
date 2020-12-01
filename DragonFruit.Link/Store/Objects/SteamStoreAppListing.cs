@@ -176,10 +176,10 @@ namespace DragonFruit.Link.Store.Objects
         #nullable enable
 
         [JsonProperty("legal_notice")]
-        public string? LegalNotice { get; set; }
+        public string LegalNotice { get; set; }
 
         [JsonProperty("ext_user_account_notice")]
-        public string? ExternalAccountNotice { get; set; }
+        public string ExternalAccountNotice { get; set; }
 
         [JsonProperty("metacritic")]
         public SteamStoreAppListingMetacriticReview? Metacritic { get; set; }

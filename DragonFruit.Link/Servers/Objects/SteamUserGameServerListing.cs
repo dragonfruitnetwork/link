@@ -13,25 +13,21 @@ namespace DragonFruit.Link.Servers.Objects
         public bool AccountBanned { get; set; }
 
         [JsonProperty("expires")]
-        public ulong ExpiresEpoch { get; set; }
+        public long ExpiresEpoch { get; set; }
 
         [JsonProperty("last_action_time")]
-        public ulong LastActionEpoch { get; set; }
+        public long LastActionEpoch { get; set; }
 
         [JsonProperty("actor")]
         public ulong Actor { get; set; }
 
-#nullable enable
-
         [JsonProperty("servers")]
-        public IEnumerable<SteamGameServerAccountInfo>? Servers { get; set; }
-
-#nullable restore
+        public IEnumerable<SteamGameServerAccountInfo> Servers { get; set; }
 
         [JsonIgnore]
-        public DateTimeOffset Expires => DateTimeOffset.UnixEpoch.AddSeconds(ExpiresEpoch);
+        public DateTimeOffset Expires => DateTimeOffset.FromUnixTimeSeconds(ExpiresEpoch);
 
         [JsonIgnore]
-        public DateTimeOffset LastAction => DateTimeOffset.UnixEpoch.AddSeconds(LastActionEpoch);
+        public DateTimeOffset LastAction => DateTimeOffset.FromUnixTimeSeconds(LastActionEpoch);
     }
 }

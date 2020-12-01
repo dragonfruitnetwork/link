@@ -26,7 +26,7 @@ namespace DragonFruit.Link.Game.Extensions
             // guaranteed to be present if result = true
             var data = response!["globalstats"];
 
-            return stats.ToDictionary(item => item, item => Convert.ToDouble(data![item]!["total"]));
+            return stats.ToDictionary(item => item, item => Convert.ToDouble(data[item]["total"]));
         }
     }
 }

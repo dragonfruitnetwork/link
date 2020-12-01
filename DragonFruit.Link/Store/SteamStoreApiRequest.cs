@@ -21,12 +21,12 @@ namespace DragonFruit.Link.Store
 
         public abstract string RequestPath { get; }
 
-        public override string? PathOverride => $"https://store.steampowered.com/api/{RequestPath}/";
+        public override string PathOverride => $"https://store.steampowered.com/api/{RequestPath}/";
 
         [JsonProperty("l")]
-        public string? LanguageName { get; set; }
+        public string LanguageName { get; set; }
 
         [JsonProperty("cc")]
-        public string? CountryCode { get; set; }
+        public string CountryCode { get; set; }
     }
 }

@@ -26,6 +26,6 @@ namespace DragonFruit.Link.Economy.Requests
         public bool? IncludeDescriptions { get; set; } = true;
 
         [QueryParameter("language")]
-        public string? LanguageCode { get; set; }
+        public string LanguageCode { get; set; }
     }
 }

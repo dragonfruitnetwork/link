@@ -25,12 +25,12 @@ namespace DragonFruit.Link.User.Objects
         /// The epoch they became associated with each other
         /// </summary>
         [JsonProperty("friend_since")]
-        public ulong FriendsSinceEpoch { get; set; }
+        public long FriendsSinceEpoch { get; set; }
 
         /// <summary>
         /// The date they became associated with each other (from <see cref="FriendsSinceEpoch"/>)
         /// </summary>
         [JsonIgnore]
-        public DateTimeOffset FriendsSince => DateTimeOffset.UnixEpoch.AddSeconds(FriendsSinceEpoch);
+        public DateTimeOffset FriendsSince => DateTimeOffset.FromUnixTimeSeconds(FriendsSinceEpoch);
     }
 }

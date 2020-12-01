@@ -16,22 +16,22 @@ namespace DragonFruit.Link.Economy.Objects
         public ulong OtherUserId { get; set; }
 
         [JsonProperty("expiration_time")]
-        public ulong ExpirationEpoch { get; set; }
+        public long ExpirationEpoch { get; set; }
 
         [JsonProperty("time_created")]
-        public ulong CreatedEpoch { get; set; }
+        public long CreatedEpoch { get; set; }
 
         [JsonProperty("time_updated")]
-        public ulong UpdatedEpoch { get; set; }
+        public long UpdatedEpoch { get; set; }
 
         [JsonIgnore]
-        public DateTimeOffset Expirtation => DateTimeOffset.UnixEpoch.AddSeconds(ExpirationEpoch);
+        public DateTimeOffset Expirtation => DateTimeOffset.FromUnixTimeSeconds(ExpirationEpoch);
 
         [JsonIgnore]
-        public DateTimeOffset Created => DateTimeOffset.UnixEpoch.AddSeconds(CreatedEpoch);
+        public DateTimeOffset Created => DateTimeOffset.FromUnixTimeSeconds(CreatedEpoch);
 
         [JsonIgnore]
-        public DateTimeOffset Updated => DateTimeOffset.UnixEpoch.AddSeconds(UpdatedEpoch);
+        public DateTimeOffset Updated => DateTimeOffset.FromUnixTimeSeconds(UpdatedEpoch);
 
         //todo to enum
         [JsonProperty("trade_offer_state")]
@@ -50,7 +50,7 @@ namespace DragonFruit.Link.Economy.Objects
 #nullable enable
 
         [JsonProperty("message")]
-        public string? Message { get; set; }
+        public string Message { get; set; }
 
         [JsonProperty("items_to_receive")]
         public IEnumerable<SteamTradeOfferItem>? ItemsToRecieve { get; set; }

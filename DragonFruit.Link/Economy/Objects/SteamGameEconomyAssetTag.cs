@@ -20,6 +20,6 @@ namespace DragonFruit.Link.Economy.Objects
         public string CategoryName { get; set; }
 
         [JsonProperty("color")]
-        public string? Colour { get; set; }
+        public string Colour { get; set; }
     }
 }

@@ -30,8 +30,8 @@ namespace DragonFruit.Link.News.Objects
         public string Feed { get; set; }
 
         [JsonProperty("date")]
-        public ulong Epoch { get; set; }
+        public long Epoch { get; set; }
 
-        public DateTimeOffset Date => DateTimeOffset.UnixEpoch.AddSeconds(Epoch);
+        public DateTimeOffset Date => DateTimeOffset.FromUnixTimeSeconds(Epoch);
     }
 }

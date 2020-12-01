@@ -15,9 +15,9 @@ namespace DragonFruit.Link.User.Objects
         public bool Achieved { get; set; }
 
         [JsonProperty("unlocktime")]
-        public ulong UnlockEpoch { get; set; }
+        public long UnlockEpoch { get; set; }
 
         [JsonIgnore]
-        public DateTimeOffset UnlockTime => DateTimeOffset.UnixEpoch.AddSeconds(UnlockEpoch);
+        public DateTimeOffset UnlockTime => DateTimeOffset.FromUnixTimeSeconds(UnlockEpoch);
     }
 }
