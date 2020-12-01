@@ -33,7 +33,7 @@ namespace DragonFruit.Link.User.Objects
         /// Their Real/IRL Name (optional)
         /// </summary>
         [JsonProperty("realname")]
-        public string? RealName { get; set; }
+        public string RealName { get; set; }
 
         /// <summary>
         /// Their Avatar/Persona's Name
@@ -51,21 +51,21 @@ namespace DragonFruit.Link.User.Objects
         /// UTC Epoch Last Logoff
         /// </summary>
         [JsonProperty("lastlogoff")]
-        public ulong LastLogoffEpoch { get; set; }
+        public long LastLogoffEpoch { get; set; }
 
         /// <summary>
         /// UTC Epoch Time the Account was created
         /// </summary>
         [JsonProperty("timecreated")]
-        public ulong AccountCreatedEpoch { get; set; }
+        public long AccountCreatedEpoch { get; set; }
 
         #region Epoch -> DateTimeOffset
 
         [JsonIgnore]
-        public DateTimeOffset LastLogoff => DateTimeOffset.UnixEpoch.AddSeconds(LastLogoffEpoch);
+        public DateTimeOffset LastLogoff => DateTimeOffset.FromUnixTimeSeconds(LastLogoffEpoch);
 
         [JsonIgnore]
-        public DateTimeOffset AccountCreated => DateTimeOffset.UnixEpoch.AddSeconds(AccountCreatedEpoch);
+        public DateTimeOffset AccountCreated => DateTimeOffset.FromUnixTimeSeconds(AccountCreatedEpoch);
 
         #endregion
 
@@ -81,13 +81,13 @@ namespace DragonFruit.Link.User.Objects
         /// ISO-3166 2-Char Country Code
         /// </summary>
         [JsonProperty("loccountrycode")]
-        public string? CountryCode { get; set; }
+        public string CountryCode { get; set; }
 
         /// <summary>
         /// Internal Code for identifying a county/state inside the <see cref="CountryCode"/>
         /// </summary>
         [JsonProperty("locstatecode")]
-        public string? CountryStateCode { get; set; }
+        public string CountryStateCode { get; set; }
 
         /// <summary>
         /// Numeric id of the user's city in the <see cref="CountryStateCode"/>

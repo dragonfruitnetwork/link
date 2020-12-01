@@ -11,6 +11,6 @@ namespace DragonFruit.Link.Economy.Objects
         public string Type { get; set; }
 
         [JsonProperty("value")]
-        public string? Value { get; set; }
+        public string Value { get; set; }
     }
 }

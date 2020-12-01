@@ -2,6 +2,7 @@
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
 using System.Collections.Generic;
+using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Link.Servers.Requests
@@ -20,9 +21,7 @@ namespace DragonFruit.Link.Servers.Requests
             IpAddresses = ips;
         }
 
+        [QueryParameter("server_ips", CollectionConversionMode.Concatenated)]
         public IEnumerable<string> IpAddresses { get; set; }
-
-        [QueryParameter("server_ips")]
-        private string IpAddressString => string.Join(',', IpAddresses);
     }
 }

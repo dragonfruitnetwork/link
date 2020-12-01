@@ -2,6 +2,8 @@
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
 using System.Collections.Generic;
+using System.Linq;
+using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Link
@@ -23,7 +25,7 @@ namespace DragonFruit.Link
 
         public IEnumerable<ulong> Ids { get; set; }
 
-        [QueryParameter("steamids")]
-        protected string CompiledIds => string.Join(',', Ids);
+        [QueryParameter("steamids", CollectionConversionMode.Concatenated)]
+        internal IEnumerable<string> ConvertedIds => Ids.Select(x => x.ToString());
     }
 }

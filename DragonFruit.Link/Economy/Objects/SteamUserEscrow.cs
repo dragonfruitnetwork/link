@@ -15,7 +15,7 @@ namespace DragonFruit.Link.Economy.Objects
         public ulong? EndDateEpoch { get; set; }
 
         [JsonProperty("escrow_end_date_rfc3339")]
-        public string? EndDateString { get; set; }
+        public string EndDateString { get; set; }
 
         [JsonIgnore]
         public DateTimeOffset EndDate => DateTimeOffset.Now.AddSeconds(Duration);

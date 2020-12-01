@@ -18,10 +18,10 @@ namespace DragonFruit.Link.Economy.Objects
         public string IconUrl { get; set; }
 
         [JsonProperty("icon_url_large")]
-        public string? IconUrlLarge { get; set; }
+        public string IconUrlLarge { get; set; }
 
         [JsonProperty("icon_drag_url")]
-        public string? IconDragUrl { get; set; }
+        public string IconDragUrl { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -36,7 +36,7 @@ namespace DragonFruit.Link.Economy.Objects
         public string MarketNameColour { get; set; }
 
         [JsonProperty("background_color")]
-        public string? BackgroundColour { get; set; }
+        public string BackgroundColour { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

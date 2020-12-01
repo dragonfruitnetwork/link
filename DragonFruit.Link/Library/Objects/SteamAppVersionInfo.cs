@@ -22,6 +22,6 @@ namespace DragonFruit.Link.Library.Objects
         public uint? RequiredVersion { get; set; }
 
         [JsonProperty("message")]
-        public string? Message { get; set; }
+        public string Message { get; set; }
     }
 }

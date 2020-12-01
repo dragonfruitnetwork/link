@@ -19,7 +19,7 @@ namespace DragonFruit.Link.User.Responses
         public ulong Id { get; set; }
 
         [JsonProperty("gameName")]
-        public string? GameName { get; set; }
+        public string GameName { get; set; }
 
         [JsonProperty("success")]
         public bool Success { get; set; }

@@ -23,9 +23,9 @@ namespace DragonFruit.Link.Economy.Requests
         public uint AppId { get; set; }
 
         [QueryParameter("currency")]
-        public string? Currency { get; set; }
+        public string Currency { get; set; }
 
         [QueryParameter("language")]
-        public string? LanguageCode { get; set; }
+        public string LanguageCode { get; set; }
     }
 }

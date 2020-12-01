@@ -20,10 +20,10 @@ namespace DragonFruit.Link.Library.Requests
         public DateTimeOffset? ModifiedSince { get; set; }
 
         [QueryParameter("if_modified_since")]
-        private double? ModifiedSinceEpoch => ModifiedSince?.Subtract(DateTimeOffset.UnixEpoch).TotalSeconds;
+        private double? ModifiedSinceEpoch => EpochFromDate(ModifiedSince);
 
         [QueryParameter("have_description_language")]
-        public string? LanguageCode { get; set; }
+        public string LanguageCode { get; set; }
 
         [QueryParameter("include_games")]
         public bool? IncludeGames { get; set; }

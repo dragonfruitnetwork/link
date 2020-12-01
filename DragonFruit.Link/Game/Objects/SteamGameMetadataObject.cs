@@ -22,12 +22,12 @@ namespace DragonFruit.Link.Game.Objects
         public bool? Hidden { get; set; }
 
         [JsonProperty("description")]
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
         [JsonProperty("icon")]
-        public string? Icon { get; set; }
+        public string Icon { get; set; }
 
         [JsonProperty("icongray")]
-        public string? GrayIcon { get; set; }
+        public string GrayIcon { get; set; }
     }
 }

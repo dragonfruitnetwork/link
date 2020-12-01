@@ -67,9 +67,9 @@ namespace DragonFruit.Link.Store.Objects
         public bool VideoStreamAvailable { get; set; }
 
         [JsonProperty("discount_expiration")]
-        public ulong DiscountExpirationEpoch { get; set; }
+        public long DiscountExpirationEpoch { get; set; }
 
         [JsonIgnore]
-        public DateTimeOffset DiscountExpiration => DateTimeOffset.UnixEpoch.AddSeconds(DiscountExpirationEpoch);
+        public DateTimeOffset DiscountExpiration => DateTimeOffset.FromUnixTimeSeconds(DiscountExpirationEpoch);
     }
 }

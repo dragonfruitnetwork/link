@@ -13,6 +13,6 @@ namespace DragonFruit.Link.Store.Objects
         public string HtmlMinimum { get; set; }
 
         [JsonProperty("recommended")]
-        public string? HtmlRecommended { get; set; }
+        public string HtmlRecommended { get; set; }
     }
 }

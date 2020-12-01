@@ -24,13 +24,13 @@ namespace DragonFruit.Link.Store.Objects
         /// Describes what the subscriptions are, this will only show if <see cref="DisplayType"/> is set to <see cref="SteamSubscriptionDisplayMode.Dropdown"/>
         /// </summary>
         [JsonProperty("selection_text")]
-        public string? SelectionText { get; set; }
+        public string SelectionText { get; set; }
 
         /// <summary>
         /// Savings Text
         /// </summary>
         [JsonProperty("save_text")]
-        public string? SaveText { get; set; }
+        public string SaveText { get; set; }
 
         [JsonProperty("display_type")]
         public SteamSubscriptionDisplayMode DisplayType { get; set; }

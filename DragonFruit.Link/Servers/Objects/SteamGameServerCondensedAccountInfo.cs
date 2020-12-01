@@ -15,9 +15,9 @@ namespace DragonFruit.Link.Servers.Objects
         public bool Banned { get; set; }
 
         [JsonProperty("expires")]
-        public ulong ExpiresEpoch { get; set; }
+        public long ExpiresEpoch { get; set; }
 
         [JsonIgnore]
-        public DateTimeOffset Expires => DateTimeOffset.UnixEpoch.AddSeconds(ExpiresEpoch);
+        public DateTimeOffset Expires => DateTimeOffset.FromUnixTimeSeconds(ExpiresEpoch);
     }
 }

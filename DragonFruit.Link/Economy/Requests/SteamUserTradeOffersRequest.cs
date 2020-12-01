@@ -25,7 +25,7 @@ namespace DragonFruit.Link.Economy.Requests
         public bool? IncludeDescriptions { get; set; } = true;
 
         [QueryParameter("language")]
-        public string? LanguageCode { get; set; }
+        public string LanguageCode { get; set; }
 
         [QueryParameter("active_only")]
         public bool? ActiveOnly { get; set; }
@@ -36,6 +36,6 @@ namespace DragonFruit.Link.Economy.Requests
         public DateTimeOffset? ActiveOnlyAfter { get; set; }
 
         [QueryParameter("time_historical_cutoff")]
-        private double? ActiveOnlyAfterEpoch => ActiveOnlyAfter?.Subtract(DateTimeOffset.UnixEpoch).TotalSeconds;
+        private double? ActiveOnlyAfterEpoch => EpochFromDate(ActiveOnlyAfter);
     }
 }

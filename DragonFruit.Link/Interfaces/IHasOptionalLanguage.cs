@@ -7,6 +7,6 @@ namespace DragonFruit.Link
 {
     public interface IHasOptionalLanguage
     {
-        public string? LanguageCode { get; set; }
+        public string LanguageCode { get; set; }
     }
 }

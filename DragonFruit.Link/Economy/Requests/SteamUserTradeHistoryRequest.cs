@@ -32,7 +32,7 @@ namespace DragonFruit.Link.Economy.Requests
         public DateTimeOffset? OnlyAfter { get; set; }
 
         [QueryParameter("start_after_time")]
-        private double? TradesAfter => OnlyAfter?.Subtract(DateTimeOffset.UnixEpoch).TotalSeconds;
+        private double? TradesAfter => OnlyAfter?.Subtract(new DateTimeOffset(1970, 1, 1, 0, 0, 0, OnlyAfter.Value.Offset)).TotalSeconds;
 
         [QueryParameter("navigating_back")]
         public bool? NavigateBackwards { get; set; }
@@ -41,7 +41,7 @@ namespace DragonFruit.Link.Economy.Requests
         public bool? IncludeDescriptions { get; set; } = true;
 
         [QueryParameter("language")]
-        public string? LanguageCode { get; set; }
+        public string LanguageCode { get; set; }
 
         [QueryParameter("include_failed")]
         public bool? IncludeFailed { get; set; }

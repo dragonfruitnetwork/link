@@ -30,7 +30,7 @@ namespace DragonFruit.Link.Store.Extensions
                 throw new SteamRequestFailedException();
             }
 
-            return response[appId.ToString()]!["data"]!.ToObject<SteamStoreAppListing>();
+            return response[appId.ToString()]!["data"].ToObject<SteamStoreAppListing>();
         }
     }
 }
