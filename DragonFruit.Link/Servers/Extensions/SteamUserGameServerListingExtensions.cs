@@ -17,7 +17,7 @@ namespace DragonFruit.Link.Servers.Extensions
         public static SteamUserGameServerListing GetGameServers(this SteamApiClient client)
         {
             var request = new SteamUserGameServerListingRequest();
-            return client.Perform<SteamUserGameServerListingResponse>(request).ServerListing;
+            return client.Perform<SteamUserGameServerListingResponse>(request)?.ServerListing;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace DragonFruit.Link.Economy.Extensions
         public static SteamUserTradeHoldDurationContainer GetTradeHoldDurations(this SteamApiClient client, ulong targetUser, string targetToken)
         {
             var request = new SteamUserTradeHoldDurationRequest(targetUser, targetToken);
-            return client.Perform<SteamUserTradeHoldDurationResponse>(request).HoldDurations;
+            return client.Perform<SteamUserTradeHoldDurationResponse>(request)?.HoldDurations;
         }
     }
 }

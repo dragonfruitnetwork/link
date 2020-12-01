@@ -20,7 +20,7 @@ namespace DragonFruit.Link.User.Extensions
         public static IEnumerable<SteamUserFriend> GetUserFriends(this SteamApiClient client, ulong steamId)
         {
             var request = new SteamUserFriendsRequest(steamId);
-            return client.Perform<SteamUserFriendsResponse>(request).Container.Friends;
+            return client.Perform<SteamUserFriendsResponse>(request)?.Container.Friends;
         }
     }
 }

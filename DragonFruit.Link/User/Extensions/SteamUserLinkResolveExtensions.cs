@@ -14,12 +14,10 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="linkSegment">The segment of the vanity url the user chooses (if the overall link is https://steamcommunity.com/id/papa_curry to get their id pass "papa_curry")</param>
         /// <returns>The users SteamID64 (or null if the link was not found)</returns>
-        public static ulong ResolveVanityUrl(this SteamApiClient client, string linkSegment)
+        public static ulong? ResolveVanityUrl(this SteamApiClient client, string linkSegment)
         {
             var request = new SteamUserLinkResolveRequest(linkSegment);
-            var response = client.Perform<SteamUserLinkResolveResponse>(request).LinkInfo;
-            
-            return response.Success ? response.Id : 0L;
+            return client.Perform<SteamUserLinkResolveResponse>(request)?.LinkInfo?.Id; 
         }
     }
 }

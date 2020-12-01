@@ -17,7 +17,7 @@ namespace DragonFruit.Link.Game.Extensions
         public static SteamGameSchemaContainer GetSchemaForGame(this SteamApiClient client, uint appId)
         {
             var request = new SteamGameSchemaRequest(appId);
-            return client.Perform<SteamGameSchemaResponse>(request).Schema;
+            return client.Perform<SteamGameSchemaResponse>(request)?.Schema;
         }
     }
 }

@@ -10,12 +10,12 @@ namespace DragonFruit.Link.User.Responses
     public class SteamUserProfileResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamUserProfileContainer? Container { get; set; }
+        public SteamUserProfileContainer Container { get; set; }
     }
 
     public class SteamUserProfileContainer
     {
         [JsonProperty("players")]
-        public IEnumerable<SteamUserProfile>? Profiles { get; set; }
+        public IEnumerable<SteamUserProfile> Profiles { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace DragonFruit.Link.Library.Extensions
         public static IEnumerable<SteamApp> GetUserRecentApps(this SteamApiClient client, ulong steamId)
         {
             var request = new SteamUserRecentsRequest(steamId);
-            return client.Perform<SteamUserLibraryResponse>(request).Library.Apps;
+            return client.Perform<SteamUserLibraryResponse>(request)?.Library?.Apps;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace DragonFruit.Link.Library.Extensions
         public static IEnumerable<SteamApp> GetUserRecentApps(this SteamApiClient client, ulong steamId, ushort maxEntries)
         {
             var request = new SteamUserRecentsRequest(steamId, maxEntries);
-            return client.Perform<SteamUserLibraryResponse>(request).Library.Apps;
+            return client.Perform<SteamUserLibraryResponse>(request)?.Library?.Apps;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace DragonFruit.Link.User.Extensions
         public static SteamUserRestriction GetUserRestrictions(this SteamApiClient client, ulong steamId)
         {
             var request = new SteamUserRestrictionsRequest(steamId);
-            return client.Perform<SteamUserRestrictionsResponse>(request).Accounts.Single();
+            return client.Perform<SteamUserRestrictionsResponse>(request)?.Accounts.Single();
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace DragonFruit.Link.User.Extensions
         public static IEnumerable<SteamUserRestriction> GetUserRestrictions(this SteamApiClient client, IEnumerable<ulong> steamIds)
         {
             var request = new SteamUserRestrictionsRequest(steamIds);
-            return client.Perform<SteamUserRestrictionsResponse>(request).Accounts;
+            return client.Perform<SteamUserRestrictionsResponse>(request)?.Accounts;
         }
     }
 }

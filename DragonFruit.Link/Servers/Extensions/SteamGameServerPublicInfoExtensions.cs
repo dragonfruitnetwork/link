@@ -18,7 +18,7 @@ namespace DragonFruit.Link.Servers.Extensions
         public static SteamGameServerPublicInfo GetServerInfo(this SteamApiClient client, ulong serverId)
         {
             var request = new SteamGameServerPublicInfoRequest(serverId);
-            return client.Perform<SteamGameServerPublicInfoResponse>(request).PublicInfo;
+            return client.Perform<SteamGameServerPublicInfoResponse>(request)?.PublicInfo;
         }
     }
 }

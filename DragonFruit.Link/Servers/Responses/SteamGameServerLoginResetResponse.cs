@@ -9,6 +9,6 @@ namespace DragonFruit.Link.Servers.Responses
     public class SteamGameServerLoginResetResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamGameServerAccountInfo? AccountInfo { get; set; }
+        public SteamGameServerAccountInfo AccountInfo { get; set; }
     }
 }

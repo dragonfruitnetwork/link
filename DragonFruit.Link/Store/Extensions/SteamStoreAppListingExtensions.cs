@@ -24,7 +24,7 @@ namespace DragonFruit.Link.Store.Extensions
 
             if (response == null)
             {
-                //todo custom exception
+                // todo custom exception
                 throw new SteamRequestFailedException();
             }
 

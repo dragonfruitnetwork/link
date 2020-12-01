@@ -15,10 +15,10 @@ namespace DragonFruit.Link.Game.Extensions
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="appId">The App Id to get the info for</param>
         /// <returns>Unsigned integer with the total players</returns>
-        public static uint GetNumberOfCurrentPlayers(this ApiClient client, uint appId)
+        public static uint? GetNumberOfCurrentPlayers(this ApiClient client, uint appId)
         {
             var request = new SteamGameCurrentPlayersRequest(appId);
-            return client.Perform<SteamGameCurrentPlayersResponse>(request).TotalPlayerInfo.CurrentPlayers;
+            return client.Perform<SteamGameCurrentPlayersResponse>(request)?.TotalPlayerInfo?.CurrentPlayers;
         }
     }
 }

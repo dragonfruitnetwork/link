@@ -20,7 +20,7 @@ namespace DragonFruit.Link.Library.Extensions
         public static SteamAppVersionInfo CheckAppVersion(this ApiClient client, uint appId, uint appVersion)
         {
             var request = new SteamAppVersionCheckRequest(appId, appVersion);
-            return client.Perform<SteamAppVersionCheckResponse>(request).VersionInfo;
+            return client.Perform<SteamAppVersionCheckResponse>(request)?.VersionInfo;
         }
     }
 }

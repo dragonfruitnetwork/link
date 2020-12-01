@@ -17,7 +17,7 @@ namespace DragonFruit.Link.User.Extensions
         public static SteamUserBadgesInfo GetUserBadges(this SteamApiClient client, ulong steamId)
         {
             var request = new SteamUserBadgesRequest(steamId);
-            return client.Perform<SteamUserBadgesResponse>(request).BadgeInfo;
+            return client.Perform<SteamUserBadgesResponse>(request)?.BadgeInfo;
         }
     }
 }

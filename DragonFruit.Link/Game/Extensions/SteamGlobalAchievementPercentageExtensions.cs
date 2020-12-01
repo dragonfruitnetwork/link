@@ -20,7 +20,7 @@ namespace DragonFruit.Link.Game.Extensions
         public static IEnumerable<SteamAchievementUnlockMetric> GetGlobalAchievementUnlockMetrics(this ApiClient client, uint appId)
         {
             var request = new SteamGlobalAchievementPercentageRequest(appId);
-            return client.Perform<SteamGlobalAchievementPercentageResponse>(request).Global.Achievements;
+            return client.Perform<SteamGlobalAchievementPercentageResponse>(request)?.Global.Achievements;
         }
     }
 }

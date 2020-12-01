@@ -19,7 +19,7 @@ namespace DragonFruit.Link.Economy.Extensions
         public static IEnumerable<SteamGameEconomyAssetPriceInfo> GetMarketPricesForApp(this SteamApiClient client, uint appId)
         {
             var request = new SteamGameEconomyAssetPriceRequest(appId);
-            return client.Perform<SteamGameEconomyAssetPriceResponse>(request).PriceInfo.Assets;
+            return client.Perform<SteamGameEconomyAssetPriceResponse>(request)?.PriceInfo.Assets;
         }
     }
 }

@@ -50,7 +50,7 @@ namespace DragonFruit.Link.Library.Extensions
                 LastAppId = lastItem.LastApp
             };
 
-            return client.Perform<SteamStoreListingResponse>(request).Listing;
+            return client.Perform<SteamStoreListingResponse>(request)?.Listing;
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace DragonFruit.Link.Library.Extensions
                 MaxEntries = maxItems
             };
 
-            return client.Perform<SteamStoreListingResponse>(request).Listing;
+            return client.Perform<SteamStoreListingResponse>(request)?.Listing;
         }
 
         #endregion
@@ -134,7 +134,7 @@ namespace DragonFruit.Link.Library.Extensions
                 LastAppId = lastItem.LastApp
             };
 
-            return client.Perform<SteamStoreListingResponse>(request).Listing;
+            return client.Perform<SteamStoreListingResponse>(request)?.Listing;
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace DragonFruit.Link.Library.Extensions
                 MaxEntries = maxItems
             };
 
-            return client.Perform<SteamStoreListingResponse>(request).Listing;
+            return client.Perform<SteamStoreListingResponse>(request)?.Listing;
         }
 
         #endregion

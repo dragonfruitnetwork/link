@@ -16,7 +16,7 @@ namespace DragonFruit.Link.Economy.Extensions
         public static SteamUserTradeOffersContainer GetTrades(this SteamApiClient client)
         {
             var request = new SteamUserTradeOffersRequest();
-            return client.Perform<SteamUserTradeOffersResponse>(request).Offers;
+            return client.Perform<SteamUserTradeOffersResponse>(request)?.Offers;
         }
     }
 }

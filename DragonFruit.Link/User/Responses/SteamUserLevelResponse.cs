@@ -9,6 +9,6 @@ namespace DragonFruit.Link.User.Responses
     public class SteamUserLevelResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamUserLevel? UserLevelInfo { get; set; }
+        public SteamUserLevel UserLevelInfo { get; set; }
     }
 }

@@ -57,7 +57,7 @@ namespace DragonFruit.Link.News.Extensions
         /// <returns>A <see cref="SteamNewsContainer"/> containing the <see cref="SteamNewsItem"/>s</returns>
         private static SteamNewsContainer GetAppNews(this ApiClient client, SteamNewsRequest request)
         {
-            return client.Perform<SteamNewsResponse>(request).Container;
+            return client.Perform<SteamNewsResponse>(request)?.Container;
         }
     }
 }

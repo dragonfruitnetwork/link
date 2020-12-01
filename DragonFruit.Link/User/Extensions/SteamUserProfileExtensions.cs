@@ -48,7 +48,7 @@ namespace DragonFruit.Link.User.Extensions
         public static SteamUserProfile GetUserProfile(this SteamApiClient client, ulong steamId)
         {
             var request = new SteamUserProfileRequest(steamId);
-            return client.Perform<SteamUserProfileResponse>(request).Container.Profiles.Single();
+            return client.Perform<SteamUserProfileResponse>(request)?.Container?.Profiles.Single();
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace DragonFruit.Link.User.Extensions
         public static IEnumerable<SteamUserProfile> GetUserProfile(this SteamApiClient client, IEnumerable<ulong> steamIds)
         {
             var request = new SteamUserProfileRequest(steamIds);
-            return client.Perform<SteamUserProfileResponse>(request).Container.Profiles;
+            return client.Perform<SteamUserProfileResponse>(request)?.Container?.Profiles;
         }
     }
 }

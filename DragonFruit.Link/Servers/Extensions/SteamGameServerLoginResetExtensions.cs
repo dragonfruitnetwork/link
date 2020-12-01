@@ -17,7 +17,7 @@ namespace DragonFruit.Link.Servers.Extensions
         public static string ResetServerLoginToken(this SteamApiClient client, ulong serverId)
         {
             var request = new SteamGameServerLoginResetRequest(serverId);
-            return client.Perform<SteamGameServerLoginResetResponse>(request).AccountInfo.ServerToken;
+            return client.Perform<SteamGameServerLoginResetResponse>(request)?.AccountInfo.ServerToken;
         }
     }
 }

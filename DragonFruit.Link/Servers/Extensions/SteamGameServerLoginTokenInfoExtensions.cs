@@ -18,7 +18,7 @@ namespace DragonFruit.Link.Servers.Extensions
         public static SteamGameServerCondensedAccountInfo GetServerLoginTokenInfo(this SteamApiClient client, string loginToken)
         {
             var request = new SteamGameServerLoginTokenInfoRequest(loginToken);
-            return client.Perform<SteamGameServerLoginTokenInfoResponse>(request).CondensedAccountInfo;
+            return client.Perform<SteamGameServerLoginTokenInfoResponse>(request)?.CondensedAccountInfo;
         }
     }
 }

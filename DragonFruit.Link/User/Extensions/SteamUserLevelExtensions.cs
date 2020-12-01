@@ -14,10 +14,10 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="steamId">The user's SteamID64</param>
         /// <returns>An unsigned int32 representing the user's level</returns>
-        public static uint GetUserLevel(this SteamApiClient client, ulong steamId)
+        public static uint? GetUserLevel(this SteamApiClient client, ulong steamId)
         {
             var request = new SteamUserLevelRequest(steamId);
-            return client.Perform<SteamUserLevelResponse>(request).UserLevelInfo.Level;
+            return client.Perform<SteamUserLevelResponse>(request)?.UserLevelInfo.Level;
         }
     }
 }
