@@ -2,6 +2,7 @@
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
 using DragonFruit.Link.Servers.Requests;
+using System.Threading;
 
 namespace DragonFruit.Link.Servers.Extensions
 {
@@ -12,10 +13,11 @@ namespace DragonFruit.Link.Servers.Extensions
         /// </summary>
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="serverId">The Steam Id of the game server</param>
-        public static void DeleteGameServer(this SteamApiClient client, ulong serverId)
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
+        public static void DeleteGameServer(this SteamApiClient client, ulong serverId, CancellationToken token = default)
         {
             var request = new SteamGameServerDeletionRequest(serverId);
-            var response = client.Perform(request);
+            var response = client.Perform(request, token);
 
             response.Dispose();
         }

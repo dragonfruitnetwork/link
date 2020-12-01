@@ -5,6 +5,7 @@ using DragonFruit.Common.Data;
 using DragonFruit.Link.News.Objects;
 using DragonFruit.Link.News.Requests;
 using DragonFruit.Link.News.Responses;
+using System.Threading;
 
 namespace DragonFruit.Link.News.Extensions
 {
@@ -54,10 +55,11 @@ namespace DragonFruit.Link.News.Extensions
         /// </summary>
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="request">The <see cref="SteamNewsRequest"/> to perform</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>A <see cref="SteamNewsContainer"/> containing the <see cref="SteamNewsItem"/>s</returns>
-        private static SteamNewsContainer GetAppNews(this ApiClient client, SteamNewsRequest request)
+        private static SteamNewsContainer GetAppNews(this ApiClient client, SteamNewsRequest request, CancellationToken token = default)
         {
-            return client.Perform<SteamNewsResponse>(request)?.Container;
+            return client.Perform<SteamNewsResponse>(request, token).Container;
         }
     }
 }

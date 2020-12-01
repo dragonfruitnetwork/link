@@ -4,6 +4,7 @@
 using DragonFruit.Link.Servers.Objects;
 using DragonFruit.Link.Servers.Requests;
 using DragonFruit.Link.Servers.Responses;
+using System.Threading;
 
 namespace DragonFruit.Link.Servers.Extensions
 {
@@ -14,11 +15,12 @@ namespace DragonFruit.Link.Servers.Extensions
         /// </summary>
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="serverId">The Steam Id of the server to get the info for</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The server's public facing information</returns>
-        public static SteamGameServerPublicInfo GetServerInfo(this SteamApiClient client, ulong serverId)
+        public static SteamGameServerPublicInfo GetServerInfo(this SteamApiClient client, ulong serverId, CancellationToken token = default)
         {
             var request = new SteamGameServerPublicInfoRequest(serverId);
-            return client.Perform<SteamGameServerPublicInfoResponse>(request)?.PublicInfo;
+            return client.Perform<SteamGameServerPublicInfoResponse>(request, token).PublicInfo;
         }
     }
 }

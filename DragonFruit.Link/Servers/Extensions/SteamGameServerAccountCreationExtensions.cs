@@ -4,6 +4,7 @@
 using DragonFruit.Link.Servers.Objects;
 using DragonFruit.Link.Servers.Requests;
 using DragonFruit.Link.Servers.Responses;
+using System.Threading;
 
 namespace DragonFruit.Link.Servers.Extensions
 {
@@ -15,11 +16,12 @@ namespace DragonFruit.Link.Servers.Extensions
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="appId">The App Id the server is for</param>
         /// <param name="memo">The note attached to the server, for personal reference.</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The login info for the server</returns>
-        public static SteamGameServerAccountLoginInfo CreateGameServer(this SteamApiClient client, uint appId, string memo)
+        public static SteamGameServerAccountLoginInfo CreateGameServer(this SteamApiClient client, uint appId, string memo, CancellationToken token = default)
         {
             var request = new SteamGameServerAccountCreationRequest(appId, memo);
-            return client.Perform<SteamGameServerAccountCreationResponse>(request)?.AccountLoginInfo;
+            return client.Perform<SteamGameServerAccountCreationResponse>(request, token).AccountLoginInfo;
         }
     }
 }

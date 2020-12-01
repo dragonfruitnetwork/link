@@ -4,6 +4,7 @@
 using DragonFruit.Common.Data;
 using DragonFruit.Link.Game.Requests;
 using DragonFruit.Link.Game.Responses;
+using System.Threading;
 
 namespace DragonFruit.Link.Game.Extensions
 {
@@ -14,11 +15,12 @@ namespace DragonFruit.Link.Game.Extensions
         /// </summary>
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="appId">The App Id to get the info for</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>Unsigned integer with the total players</returns>
-        public static uint? GetNumberOfCurrentPlayers(this ApiClient client, uint appId)
+        public static uint GetNumberOfCurrentPlayers(this ApiClient client, uint appId, CancellationToken token = default)
         {
             var request = new SteamGameCurrentPlayersRequest(appId);
-            return client.Perform<SteamGameCurrentPlayersResponse>(request)?.TotalPlayerInfo?.CurrentPlayers;
+            return client.Perform<SteamGameCurrentPlayersResponse>(request, token).TotalPlayerInfo.CurrentPlayers;
         }
     }
 }

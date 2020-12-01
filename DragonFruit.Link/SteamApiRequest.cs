@@ -9,42 +9,31 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Link
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public abstract class SteamApiRequest : ApiRequest
     {
-        #region Overrides
-
-        public override Methods Method => Methods.Get;
-
-        public override string AcceptedContent => "application/json";
-
-        #endregion
-
-        #region Authentication
-
-        //we use the RequireApiKey instead, as keys need to be sent as a query
-        public override bool RequireAuth => false;
+        protected override Methods Method => Methods.Get;
+        protected override bool RequireAuth => false; //this only checks headers, ours is in the query
 
         //replaces RequireAuth, see above
         public abstract bool RequireApiKey { get; }
 
-        [QueryParameter("key"), JsonIgnore]
-        public string ApiKey { get; set; }
+        #region Path
 
-        #endregion
-
-        #region Path Constructors
-        
         public virtual string? PathOverride { get; }
 
         public override string Path => PathOverride ?? $"https://api.steampowered.com/{Interface}/{InterfaceMethod}/v{MethodVersion}/";
 
         public abstract int MethodVersion { get; }
-    
+
         public abstract string Interface { get; }
 
         public abstract string InterfaceMethod { get; }
 
         #endregion
+
+        [QueryParameter("key")]
+        public string ApiKey { get; set; } = null!;
 
         [QueryParameter("format")]
         protected string OutputFormat => "json";
