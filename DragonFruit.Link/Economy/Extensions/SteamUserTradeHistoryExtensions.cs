@@ -19,7 +19,7 @@ namespace DragonFruit.Link.Economy.Extensions
         public static SteamUserTradeHistoryContainer GetTradeHistory(this SteamApiClient client, uint maxEntries, CancellationToken token = default)
         {
             var request = new SteamUserTradeHistoryRequest(maxEntries);
-            return client.Perform<SteamUserTradeHistoryResponse>(request, token).History;
+            return client.Perform<SteamUserTradeHistoryResponse>(request, token)?.History;
         }
     }
 }

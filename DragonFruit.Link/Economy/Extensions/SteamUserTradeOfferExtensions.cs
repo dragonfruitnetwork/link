@@ -20,7 +20,7 @@ namespace DragonFruit.Link.Economy.Extensions
         public static SteamUserTradeOffer GetTradeOffer(this SteamApiClient client, ulong tradeId, CancellationToken token = default)
         {
             var request = new SteamUserTradeOfferRequest(tradeId);
-            return client.Perform<SteamUserTradeOfferResponse>(request, token).OfferLookupResult?.Offer;
+            return client.Perform<SteamUserTradeOfferResponse>(request, token)?.OfferLookupResult?.Offer;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace DragonFruit.Link.Servers.Extensions
         public static SteamGameServerPublicInfo GetServerInfo(this SteamApiClient client, ulong serverId, CancellationToken token = default)
         {
             var request = new SteamGameServerPublicInfoRequest(serverId);
-            return client.Perform<SteamGameServerPublicInfoResponse>(request, token).PublicInfo;
+            return client.Perform<SteamGameServerPublicInfoResponse>(request, token)?.PublicInfo;
         }
     }
 }

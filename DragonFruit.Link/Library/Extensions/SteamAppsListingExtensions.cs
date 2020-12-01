@@ -24,7 +24,7 @@ namespace DragonFruit.Link.Library.Extensions
         public static IEnumerable<SteamBasicSteamApp> GetAllAppNameAndIds(this ApiClient client, CancellationToken token = default)
         {
             var request = new SteamAppsListingRequest();
-            return client.Perform<SteamAppsListingResponse>(request, token).Listing.Apps;
+            return client.Perform<SteamAppsListingResponse>(request, token)?.Listing.Apps;
         }
     }
 }

@@ -32,7 +32,7 @@ namespace DragonFruit.Link.Library.Extensions
         public static IEnumerable<SteamApp> GetUserAppLibrary(this SteamApiClient client, ulong steamId, bool includeFreeGames, CancellationToken token = default)
         {
             var request = new SteamUserLibraryRequest(steamId, includeFreeGames);
-            return client.Perform<SteamUserLibraryResponse>(request, token).Library.Apps;
+            return client.Perform<SteamUserLibraryResponse>(request, token)?.Library.Apps;
         }
     }
 }

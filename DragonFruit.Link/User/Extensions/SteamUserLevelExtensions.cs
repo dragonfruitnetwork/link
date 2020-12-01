@@ -16,10 +16,10 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="steamId">The user's SteamID64</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>An unsigned int32 representing the user's level</returns>
-        public static uint GetUserLevel(this SteamApiClient client, ulong steamId, CancellationToken token = default)
+        public static uint? GetUserLevel(this SteamApiClient client, ulong steamId, CancellationToken token = default)
         {
             var request = new SteamUserLevelRequest(steamId);
-            return client.Perform<SteamUserLevelResponse>(request, token).UserLevelInfo.Level;
+            return client.Perform<SteamUserLevelResponse>(request, token)?.UserLevelInfo.Level;
         }
     }
 }

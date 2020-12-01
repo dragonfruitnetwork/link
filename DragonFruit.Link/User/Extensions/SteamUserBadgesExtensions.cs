@@ -18,7 +18,7 @@ namespace DragonFruit.Link.User.Extensions
         public static SteamUserBadgesInfo GetUserBadges(this SteamApiClient client, ulong steamId, CancellationToken token = default)
         {
             var request = new SteamUserBadgesRequest(steamId);
-            return client.Perform<SteamUserBadgesResponse>(request, token).BadgeInfo;
+            return client.Perform<SteamUserBadgesResponse>(request, token)?.BadgeInfo;
         }
     }
 }

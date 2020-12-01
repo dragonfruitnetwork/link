@@ -19,7 +19,7 @@ namespace DragonFruit.Link.Economy.Extensions
         public static SteamUserTradeHistoryContainer GetTradeStatus(this SteamApiClient client, ulong tradeId, CancellationToken token = default)
         {
             var request = new SteamUserTradeStatusRequest(tradeId);
-            return client.Perform<SteamUserTradeStatusResponse>(request, token).History;
+            return client.Perform<SteamUserTradeStatusResponse>(request, token)?.History;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace DragonFruit.Link.User.Extensions
         public static IEnumerable<SteamUserFriend> GetUserFriends(this SteamApiClient client, ulong steamId, CancellationToken token = default)
         {
             var request = new SteamUserFriendsRequest(steamId);
-            return client.Perform<SteamUserFriendsResponse>(request, token).Container.Friends;
+            return client.Perform<SteamUserFriendsResponse>(request, token)?.Container.Friends;
         }
     }
 }

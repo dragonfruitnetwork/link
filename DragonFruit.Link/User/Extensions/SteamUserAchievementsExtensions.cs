@@ -22,7 +22,7 @@ namespace DragonFruit.Link.User.Extensions
         public static IEnumerable<SteamUserAchievementObject> GetUserAchievements(this SteamApiClient client, uint appId, ulong steamId, CancellationToken token = default)
         {
             var request = new SteamUserAchievementsRequest(steamId, appId);
-            return client.Perform<SteamUserAchievementsResponse>(request, token).Player.Achievements;
+            return client.Perform<SteamUserAchievementsResponse>(request, token)?.Player.Achievements;
         }
     }
 }

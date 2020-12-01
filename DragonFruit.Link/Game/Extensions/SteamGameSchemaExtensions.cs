@@ -19,7 +19,7 @@ namespace DragonFruit.Link.Game.Extensions
         public static SteamGameSchemaContainer GetSchemaForGame(this SteamApiClient client, uint appId, CancellationToken token = default)
         {
             var request = new SteamGameSchemaRequest(appId);
-            return client.Perform<SteamGameSchemaResponse>(request, token).Schema;
+            return client.Perform<SteamGameSchemaResponse>(request, token)?.Schema;
         }
     }
 }

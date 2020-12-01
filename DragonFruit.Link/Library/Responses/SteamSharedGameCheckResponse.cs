@@ -9,6 +9,6 @@ namespace DragonFruit.Link.Library.Responses
     public class SteamSharedGameCheckResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamSharedGameLenderInfo? LenderInfo { get; set; }
+        public SteamSharedGameLenderInfo LenderInfo { get; set; }
     }
 }

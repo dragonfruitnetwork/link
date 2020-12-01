@@ -20,7 +20,7 @@ namespace DragonFruit.Link.User.Extensions
         public static SteamUserGameStatsContainer GetUserGameStats(this SteamApiClient client, uint appId, ulong steamId, CancellationToken token = default)
         {
             var request = new SteamUserGameStatsRequest(steamId, appId);
-            return client.Perform<SteamUserGameStatsResponse>(request, token).Player;
+            return client.Perform<SteamUserGameStatsResponse>(request, token)?.Player;
         }
     }
 }
