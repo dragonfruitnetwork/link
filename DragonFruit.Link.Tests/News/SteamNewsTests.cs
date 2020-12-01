@@ -20,8 +20,10 @@ namespace DragonFruit.Link.Tests.News
 
             var longNewsItem = newsContainer.Items.FirstOrDefault(x => x.Body.Length > 50);
 
-            if(longNewsItem == null)
+            if (longNewsItem == null)
+            {
                 Assert.Inconclusive("No long-bodied news articles available for testing");
+            }
 
             var shortenedContainer = Client.GetAppNews(SteamApps.RainbowSix, 15, 50);
             var sameLongNewsItem = shortenedContainer.Items.Single(x => x.Id == longNewsItem.Id);
