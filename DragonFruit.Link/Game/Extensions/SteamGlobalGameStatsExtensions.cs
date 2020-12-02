@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using DragonFruit.Common.Data;
+using DragonFruit.Link.Exceptions;
 using DragonFruit.Link.Game.Requests;
 using Newtonsoft.Json.Linq;
 
@@ -20,7 +21,7 @@ namespace DragonFruit.Link.Game.Extensions
 
             if ((bool?)response?["result"] != true)
             {
-                throw new Exception("Request failed");
+                throw new SteamRequestFailedException();
             }
 
             // guaranteed to be present if result = true

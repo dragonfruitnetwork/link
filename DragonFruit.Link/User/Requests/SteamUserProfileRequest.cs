@@ -19,7 +19,9 @@ namespace DragonFruit.Link.User.Requests
             : base(user ?? 0)
         {
             if (!user.HasValue)
+            {
                 throw new SteamBadRequestException();
+            }
         }
 
         public SteamUserProfileRequest(ulong user)

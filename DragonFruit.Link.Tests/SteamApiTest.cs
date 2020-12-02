@@ -19,6 +19,11 @@ namespace DragonFruit.Link.Tests
 
         private const string VariableName = "steam";
 
+        protected SteamApiTest()
+        {
+            // idk... see *SonarCSharp_S1118*
+        }
+
         protected static SteamApiClient Client => _client ??= new SteamApiClient(RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
             ? Environment.GetEnvironmentVariable(VariableName, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(VariableName, EnvironmentVariableTarget.Machine) ?? Environment.GetEnvironmentVariable(VariableName)
             : Environment.GetEnvironmentVariable(VariableName));

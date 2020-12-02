@@ -35,7 +35,9 @@ namespace DragonFruit.Link.User.Extensions
 
             //todo custom exception
             if (!steamId.HasValue)
+            {
                 throw new SteamRequestFailedException();
+            }
 
             return GetUserProfile(client, steamId.Value);
         }
@@ -47,7 +49,8 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="steamId">The user's SteamID64</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The user's <see cref="SteamUserProfile"/></returns>
-        public static SteamUserProfile GetUserProfile(this SteamApiClient client, ulong steamId, CancellationToken token = default)
+        public static SteamUserProfile GetUserProfile(this SteamApiClient client, ulong steamId,
+                                                      CancellationToken token = default)
         {
             var request = new SteamUserProfileRequest(steamId);
             return client.Perform<SteamUserProfileResponse>(request, token)?.Container?.Profiles.Single();
@@ -60,7 +63,9 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="steamIds"><see cref="IEnumerable{T}"/> of user SteamID64s</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="SteamUserProfile"/></returns>
-        public static IEnumerable<SteamUserProfile> GetUserProfile(this SteamApiClient client, IEnumerable<ulong> steamIds, CancellationToken token = default)
+        public static IEnumerable<SteamUserProfile> GetUserProfile(this SteamApiClient client,
+                                                                   IEnumerable<ulong> steamIds,
+                                                                   CancellationToken token = default)
         {
             var request = new SteamUserProfileRequest(steamIds);
             return client.Perform<SteamUserProfileResponse>(request, token)?.Container?.Profiles;
