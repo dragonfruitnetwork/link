@@ -18,7 +18,7 @@ namespace DragonFruit.Link.Economy.Extensions
         public static SteamUserTradeOffersContainer GetTrades(this SteamApiClient client, CancellationToken token = default)
         {
             var request = new SteamUserTradeOffersRequest();
-            return client.Perform<SteamUserTradeOffersResponse>(request, token).Offers;
+            return client.Perform<SteamUserTradeOffersResponse>(request, token)?.Offers;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace DragonFruit.Link.Servers.Extensions
         public static SteamGameServerCondensedAccountInfo GetServerLoginTokenInfo(this SteamApiClient client, string loginToken, CancellationToken token = default)
         {
             var request = new SteamGameServerLoginTokenInfoRequest(loginToken);
-            return client.Perform<SteamGameServerLoginTokenInfoResponse>(request, token).CondensedAccountInfo;
+            return client.Perform<SteamGameServerLoginTokenInfoResponse>(request, token)?.CondensedAccountInfo;
         }
     }
 }

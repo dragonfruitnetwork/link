@@ -21,7 +21,7 @@ namespace DragonFruit.Link.Servers.Extensions
         public static SteamGameServerAccountLoginInfo CreateGameServer(this SteamApiClient client, uint appId, string memo, CancellationToken token = default)
         {
             var request = new SteamGameServerAccountCreationRequest(appId, memo);
-            return client.Perform<SteamGameServerAccountCreationResponse>(request, token).AccountLoginInfo;
+            return client.Perform<SteamGameServerAccountCreationResponse>(request, token)?.AccountLoginInfo;
         }
     }
 }

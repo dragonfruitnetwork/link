@@ -19,7 +19,7 @@ namespace DragonFruit.Link.Servers.Extensions
         public static SteamUserGameServerListing GetGameServers(this SteamApiClient client, CancellationToken token = default)
         {
             var request = new SteamUserGameServerListingRequest();
-            return client.Perform<SteamUserGameServerListingResponse>(request, token).ServerListing;
+            return client.Perform<SteamUserGameServerListingResponse>(request, token)?.ServerListing;
         }
     }
 }

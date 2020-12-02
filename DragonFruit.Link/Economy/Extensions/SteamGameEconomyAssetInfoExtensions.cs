@@ -22,7 +22,7 @@ namespace DragonFruit.Link.Economy.Extensions
         public static IEnumerable<SteamGameEconomyAsset> GetMarketItemsForApp(this SteamApiClient client, uint appId, IEnumerable<ulong> items, CancellationToken token = default)
         {
             var request = new SteamGameEconomyAssetInfoRequest(appId, items);
-            return client.Perform<SteamGameEconomyAssetInfoResponse>(request, token).Assets;
+            return client.Perform<SteamGameEconomyAssetInfoResponse>(request, token)?.Assets;
         }
     }
 }

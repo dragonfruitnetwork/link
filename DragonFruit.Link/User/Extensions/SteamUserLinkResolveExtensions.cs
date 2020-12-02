@@ -16,12 +16,10 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="linkSegment">The segment of the vanity url the user chooses (if the overall link is https://steamcommunity.com/id/papa_curry to get their id pass "papa_curry")</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The users SteamID64 (or null if the link was not found)</returns>
-        public static ulong ResolveVanityUrl(this SteamApiClient client, string linkSegment, CancellationToken token = default)
+        public static ulong? ResolveVanityUrl(this SteamApiClient client, string linkSegment, CancellationToken token = default)
         {
             var request = new SteamUserLinkResolveRequest(linkSegment);
-            var response = client.Perform<SteamUserLinkResolveResponse>(request, token).LinkInfo;
-
-            return response.Success ? response.Id : 0L;
+            return client.Perform<SteamUserLinkResolveResponse>(request, token)?.LinkInfo?.Id;
         }
     }
 }

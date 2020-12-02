@@ -9,6 +9,6 @@ namespace DragonFruit.Link.User.Responses
     public class SteamUserLinkResolveResponse : ISteamApiResponse
     {
         [JsonProperty("response")]
-        public SteamUserLink? LinkInfo { get; set; }
+        public SteamUserLink LinkInfo { get; set; }
     }
 }

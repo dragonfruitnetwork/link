@@ -17,10 +17,10 @@ namespace DragonFruit.Link.Game.Extensions
         /// <param name="appId">The App Id to get the info for</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>Unsigned integer with the total players</returns>
-        public static uint GetNumberOfCurrentPlayers(this ApiClient client, uint appId, CancellationToken token = default)
+        public static uint? GetNumberOfCurrentPlayers(this ApiClient client, uint appId, CancellationToken token = default)
         {
             var request = new SteamGameCurrentPlayersRequest(appId);
-            return client.Perform<SteamGameCurrentPlayersResponse>(request, token).TotalPlayerInfo.CurrentPlayers;
+            return client.Perform<SteamGameCurrentPlayersResponse>(request, token)?.TotalPlayerInfo?.CurrentPlayers;
         }
     }
 }

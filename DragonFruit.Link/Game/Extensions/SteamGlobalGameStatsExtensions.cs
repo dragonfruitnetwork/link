@@ -16,14 +16,14 @@ namespace DragonFruit.Link.Game.Extensions
         public static Dictionary<string, double> GetGlobalGameStats(this ApiClient client, uint appId, IEnumerable<string> stats, CancellationToken token = default)
         {
             var request = new SteamGlobalGameStatsRequest(appId, stats);
-            var response = client.Perform<JObject>(request, token)["response"]!;
+            var response = client.Perform<JObject>(request, token)["response"];
 
             if ((bool?)response?["result"] != true)
             {
                 throw new Exception("Request failed");
             }
 
-            // suppress null as we know the result was valid
+            // guaranteed to be present if result = true
             var data = response!["globalstats"];
 
             return stats.ToDictionary(item => item, item => Convert.ToDouble(data[item]["total"]));
