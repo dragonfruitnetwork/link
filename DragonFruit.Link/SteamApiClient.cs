@@ -1,26 +1,20 @@
 ﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
-using System.Globalization;
 using DragonFruit.Common.Data;
+using DragonFruit.Common.Data.Serializers;
 using DragonFruit.Link.Exceptions;
 
 namespace DragonFruit.Link
 {
-    public class SteamApiClient : ApiClient
+    public class SteamApiClient : ApiClient<ApiJsonSerializer>
     {
         private readonly string _apiKey;
         private readonly bool _apiKeySet;
 
         #region Constructors
 
-        public SteamApiClient()
-            : base(CultureInfo.InvariantCulture) // creates a new ApiJsonSerializer
-        {
-        }
-
         public SteamApiClient(string apiKey)
-            : this()
         {
             _apiKey = apiKey;
             _apiKeySet = true;
