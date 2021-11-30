@@ -3,51 +3,19 @@
 
 using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Serializers;
-using DragonFruit.Link.Exceptions;
 
 namespace DragonFruit.Link
 {
-    public class SteamApiClient : ApiClient<ApiJsonSerializer>
+    public class SteamApiClient : ApiClient<ApiJsonSerializer>, ISteamApiClient
     {
-        private readonly string _apiKey;
-        private readonly bool _apiKeySet;
-
-        #region Constructors
-
-        public SteamApiClient(string apiKey)
+        public SteamApiClient(string api)
         {
-            _apiKey = apiKey;
-            _apiKeySet = true;
+            ApiKey = api;
         }
 
-        public SteamApiClient(string apiKey, string userAgent)
-            : this(apiKey)
-        {
-            UserAgent = userAgent;
-        }
-
-        #endregion
-
-        protected override void ValidateRequest(ApiRequest requestData)
-        {
-            base.ValidateRequest(requestData);
-
-            if (!(requestData is SteamApiRequest steamRequest))
-            {
-                return;
-            }
-
-            if (!steamRequest.RequireApiKey)
-            {
-                return;
-            }
-
-            if (!_apiKeySet)
-            {
-                throw new SteamApiKeyMissingException();
-            }
-
-            steamRequest.ApiKey = _apiKey;
-        }
+        /// <summary>
+        /// The api key to use in authenticated requests
+        /// </summary>
+        public string ApiKey { get; }
     }
 }
