@@ -15,11 +15,11 @@
     <!--    todo use packaged icon-->
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/31821773</PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <LangVersion>8</LangVersion>
+    <LangVersion>9</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DragonFruit.Common.Data" Version="2021.910.47" />
+    <PackageReference Include="DragonFruit.Common.Data" Version="2021.1130.58-beta" />
   </ItemGroup>
 
 </Project>
