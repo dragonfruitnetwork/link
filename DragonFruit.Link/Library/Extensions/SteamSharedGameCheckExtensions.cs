@@ -4,6 +4,7 @@
 using DragonFruit.Link.Library.Requests;
 using DragonFruit.Link.Library.Responses;
 using System.Threading;
+using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.Library.Extensions
 {
@@ -18,7 +19,7 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The Game Owners' SteamID64</returns>
         /// <remarks>The user must be currently playing the game for this to return a valid result. If 0 is returned the user either owns the game or they aren't currently playing it.</remarks>
-        public static ulong? GetSharedGameOwner(this SteamApiClient client, uint appId, ulong steamId, CancellationToken token = default)
+        public static ulong? GetSharedGameOwner<T>(this T client, uint appId, ulong steamId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamSharedGameCheckRequest(steamId, appId);
             return client.Perform<SteamSharedGameCheckResponse>(request, token)?.LenderInfo.LenderSteamId;

@@ -4,6 +4,7 @@
 using DragonFruit.Link.User.Requests;
 using DragonFruit.Link.User.Responses;
 using System.Threading;
+using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.User.Extensions
 {
@@ -15,7 +16,7 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="steamId">The user's SteamID64</param>
         /// <returns>A <see cref="SteamUserBadgesInfo"/> item containing badges and level info</returns>
-        public static SteamUserBadgesInfo GetUserBadges(this SteamApiClient client, ulong steamId, CancellationToken token = default)
+        public static SteamUserBadgesInfo GetUserBadges<T>(this T client, ulong steamId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamUserBadgesRequest(steamId);
             return client.Perform<SteamUserBadgesResponse>(request, token)?.BadgeInfo;

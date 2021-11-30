@@ -3,6 +3,7 @@
 
 using System.Net.Http;
 using System.Threading;
+using DragonFruit.Common.Data;
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Exceptions;
 
@@ -16,7 +17,7 @@ namespace DragonFruit.Link.Economy.Extensions
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="offerId">The id of the offer to decline</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
-        public static void DeclineTrade(this SteamApiClient client, ulong offerId, CancellationToken token = default)
+        public static void DeclineTrade<T>(this T client, ulong offerId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamUserTradeDeclineRequest(offerId);
             HttpResponseMessage result = null;

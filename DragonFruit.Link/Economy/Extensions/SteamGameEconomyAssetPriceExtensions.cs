@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Threading;
+using DragonFruit.Common.Data;
 using DragonFruit.Link.Economy.Objects;
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Economy.Responses;
@@ -18,7 +19,7 @@ namespace DragonFruit.Link.Economy.Extensions
         /// <param name="appId">The App Id to get market info for</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>A list of all the items and their prices in various currencies</returns>
-        public static IEnumerable<SteamGameEconomyAssetPriceInfo> GetMarketPricesForApp(this SteamApiClient client, uint appId, CancellationToken token = default)
+        public static IEnumerable<SteamGameEconomyAssetPriceInfo> GetMarketPricesForApp<T>(this T client, uint appId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamGameEconomyAssetPriceRequest(appId);
             return client.Perform<SteamGameEconomyAssetPriceResponse>(request, token)?.PriceInfo.Assets;

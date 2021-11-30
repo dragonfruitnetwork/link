@@ -5,6 +5,7 @@ using DragonFruit.Link.Economy.Objects;
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Economy.Responses;
 using System.Threading;
+using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.Economy.Extensions
 {
@@ -16,7 +17,7 @@ namespace DragonFruit.Link.Economy.Extensions
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>A summary of the user's trade offers</returns>
-        public static SteamUserTradeOffersSummary GetTradeOffersSummary(this SteamApiClient client, CancellationToken token = default)
+        public static SteamUserTradeOffersSummary GetTradeOffersSummary<T>(this T client, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamUserTradeOffersSummaryRequest();
             return client.Perform<SteamUserTradeOffersSummaryResponse>(request, token)?.Summary;

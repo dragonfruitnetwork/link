@@ -4,6 +4,7 @@
 using DragonFruit.Link.Servers.Requests;
 using DragonFruit.Link.Servers.Responses;
 using System.Threading;
+using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.Servers.Extensions
 {
@@ -16,7 +17,7 @@ namespace DragonFruit.Link.Servers.Extensions
         /// <param name="serverId">The Steam Id of the game server</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The new login token</returns>
-        public static string ResetServerLoginToken(this SteamApiClient client, ulong serverId, CancellationToken token = default)
+        public static string ResetServerLoginToken<T>(this T client, ulong serverId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamGameServerLoginResetRequest(serverId);
             return client.Perform<SteamGameServerLoginResetResponse>(request, token)?.AccountInfo.ServerToken;

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using DragonFruit.Common.Data;
 using DragonFruit.Link.Exceptions;
 using DragonFruit.Link.User.Objects;
 using DragonFruit.Link.User.Requests;
@@ -20,7 +21,7 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="steamUrl">The user's steam link, with or without the domain</param>
         /// <returns>The user's <see cref="SteamUserProfile"/>, providing the url was valid</returns>
-        public static SteamUserProfile GetUserProfile(this SteamApiClient client, string steamUrl)
+        public static SteamUserProfile GetUserProfile<T>(this T client, string steamUrl) where T : ApiClient, ISteamApiClient
         {
             ulong? steamId = null;
 
@@ -49,8 +50,7 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="steamId">The user's SteamID64</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The user's <see cref="SteamUserProfile"/></returns>
-        public static SteamUserProfile GetUserProfile(this SteamApiClient client, ulong steamId,
-                                                      CancellationToken token = default)
+        public static SteamUserProfile GetUserProfile<T>(this T client, ulong steamId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamUserProfileRequest(steamId);
             return client.Perform<SteamUserProfileResponse>(request, token)?.Container?.Profiles.Single();
@@ -63,9 +63,7 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="steamIds"><see cref="IEnumerable{T}"/> of user SteamID64s</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="SteamUserProfile"/></returns>
-        public static IEnumerable<SteamUserProfile> GetUserProfile(this SteamApiClient client,
-                                                                   IEnumerable<ulong> steamIds,
-                                                                   CancellationToken token = default)
+        public static IEnumerable<SteamUserProfile> GetUserProfile<T>(this T client, IEnumerable<ulong> steamIds, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamUserProfileRequest(steamIds);
             return client.Perform<SteamUserProfileResponse>(request, token)?.Container?.Profiles;

@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Threading;
+using DragonFruit.Common.Data;
 using DragonFruit.Link.Economy.Objects;
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Economy.Responses;
@@ -19,7 +20,7 @@ namespace DragonFruit.Link.Economy.Extensions
         /// <param name="items">An <see cref="IEnumerable{T}"/> of items to get info for</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The assets requested in the <see cref="items"/> argument</returns>
-        public static IEnumerable<SteamGameEconomyAsset> GetMarketItemsForApp(this SteamApiClient client, uint appId, IEnumerable<ulong> items, CancellationToken token = default)
+        public static IEnumerable<SteamGameEconomyAsset> GetMarketItemsForApp<T>(this T client, uint appId, IEnumerable<ulong> items, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamGameEconomyAssetInfoRequest(appId, items);
             return client.Perform<SteamGameEconomyAssetInfoResponse>(request, token)?.Assets;

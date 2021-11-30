@@ -5,6 +5,7 @@ using DragonFruit.Link.Servers.Objects;
 using DragonFruit.Link.Servers.Requests;
 using DragonFruit.Link.Servers.Responses;
 using System.Threading;
+using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.Servers.Extensions
 {
@@ -17,7 +18,7 @@ namespace DragonFruit.Link.Servers.Extensions
         /// <param name="loginToken">The login token to query. The API key owner must have own the server for this to work</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>A condensed server account info response</returns>
-        public static SteamGameServerCondensedAccountInfo GetServerLoginTokenInfo(this SteamApiClient client, string loginToken, CancellationToken token = default)
+        public static SteamGameServerCondensedAccountInfo GetServerLoginTokenInfo<T>(this T client, string loginToken, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamGameServerLoginTokenInfoRequest(loginToken);
             return client.Perform<SteamGameServerLoginTokenInfoResponse>(request, token)?.CondensedAccountInfo;

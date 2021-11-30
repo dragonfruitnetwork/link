@@ -3,6 +3,7 @@
 
 using DragonFruit.Link.Servers.Requests;
 using System.Threading;
+using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.Servers.Extensions
 {
@@ -14,7 +15,7 @@ namespace DragonFruit.Link.Servers.Extensions
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="serverId">The Steam Id of the game server</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
-        public static void DeleteGameServer(this SteamApiClient client, ulong serverId, CancellationToken token = default)
+        public static void DeleteGameServer<T>(this T client, ulong serverId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamGameServerDeletionRequest(serverId);
             var response = client.Perform(request, token);

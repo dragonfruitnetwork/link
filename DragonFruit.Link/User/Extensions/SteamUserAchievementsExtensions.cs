@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Threading;
+using DragonFruit.Common.Data;
 using DragonFruit.Link.User.Objects;
 using DragonFruit.Link.User.Requests;
 using DragonFruit.Link.User.Responses;
@@ -19,7 +20,7 @@ namespace DragonFruit.Link.User.Extensions
         /// <param name="steamId">The user's SteamID64</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="SteamUserAchievementObject"/>s</returns>
-        public static IEnumerable<SteamUserAchievementObject> GetUserAchievements(this SteamApiClient client, uint appId, ulong steamId, CancellationToken token = default)
+        public static IEnumerable<SteamUserAchievementObject> GetUserAchievements<T>(this T client, uint appId, ulong steamId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamUserAchievementsRequest(steamId, appId);
             return client.Perform<SteamUserAchievementsResponse>(request, token)?.Player.Achievements;
