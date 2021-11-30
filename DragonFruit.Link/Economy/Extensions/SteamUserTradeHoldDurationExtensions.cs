@@ -4,6 +4,7 @@
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Economy.Responses;
 using System.Threading;
+using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.Economy.Extensions
 {
@@ -17,7 +18,7 @@ namespace DragonFruit.Link.Economy.Extensions
         /// <param name="targetToken">The `token` parameter of the user's Trade URL</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The info of all parties' hold durations and a final one that will be used in the real trade</returns>
-        public static SteamUserTradeHoldDurationContainer GetTradeHoldDurations(this SteamApiClient client, ulong targetUser, string targetToken, CancellationToken token = default)
+        public static SteamUserTradeHoldDurationContainer GetTradeHoldDurations<T>(this T client, ulong targetUser, string targetToken, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamUserTradeHoldDurationRequest(targetUser, targetToken);
             return client.Perform<SteamUserTradeHoldDurationResponse>(request, token)?.HoldDurations;

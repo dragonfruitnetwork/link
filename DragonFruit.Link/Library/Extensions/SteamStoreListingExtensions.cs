@@ -4,6 +4,7 @@
 using DragonFruit.Link.Library.Requests;
 using DragonFruit.Link.Library.Responses;
 using System.Threading;
+using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.Library.Extensions
 {
@@ -17,7 +18,7 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>10,000 Items being sold on the Steam store</returns>
-        public static SteamStoreListingContainer GetStoreItems(this SteamApiClient client, CancellationToken token = default)
+        public static SteamStoreListingContainer GetStoreItems<T>(this T client, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamStoreListingRequest();
             return client.Perform<SteamStoreListingResponse>(request, token).Listing;
@@ -29,7 +30,7 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="maxItems">Max number of entries to be returned</param>
         /// <returns>Up-to <see cref="maxItems"/> items being sold on the Steam store</returns>
-        public static SteamStoreListingContainer GetStoreItems(this SteamApiClient client, uint maxItems, CancellationToken token = default)
+        public static SteamStoreListingContainer GetStoreItems<T>(this T client, uint maxItems, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamStoreListingRequest
             {
@@ -45,7 +46,7 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="lastItem">Container with the last app id inside (everything else can be empty)</param>
         /// <returns>The next 10,000 items being sold on the Steam store</returns>
-        public static SteamStoreListingContainer GetStoreItems(this SteamApiClient client, SteamStoreListingContainer lastItem, CancellationToken token = default)
+        public static SteamStoreListingContainer GetStoreItems<T>(this T client, SteamStoreListingContainer lastItem, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamStoreListingRequest
             {
@@ -61,7 +62,7 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="maxItems">Max number of entries to be returned</param>
         /// <returns>Up-to <see cref="maxItems"/> items being sold on the Steam store</returns>
-        public static SteamStoreListingContainer GetStoreItems(this SteamApiClient client, uint maxItems, SteamStoreListingContainer lastItem, CancellationToken token = default)
+        public static SteamStoreListingContainer GetStoreItems<T>(this T client, uint maxItems, SteamStoreListingContainer lastItem, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamStoreListingRequest
             {
@@ -82,7 +83,7 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="client">The <see cref="SteamApiRequest"/> to use</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>10,000 apps or games being sold on the Steam store</returns>
-        public static SteamStoreListingContainer GetStoreApps(this SteamApiClient client, CancellationToken token = default)
+        public static SteamStoreListingContainer GetStoreApps<T>(this T client, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamStoreListingRequest
             {
@@ -103,7 +104,7 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="maxItems">Max number of entries to be returned</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>Up-to <see cref="maxItems"/> games and apps being sold on the Steam store</returns>
-        public static SteamStoreListingContainer GetStoreApps(this SteamApiClient client, uint maxItems, CancellationToken token = default)
+        public static SteamStoreListingContainer GetStoreApps<T>(this T client, uint maxItems, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamStoreListingRequest
             {
@@ -126,7 +127,7 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="lastItem">Container with the last app id inside (everything else can be empty)</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>The next 10,000 apps and games being sold on the Steam store</returns>
-        public static SteamStoreListingContainer GetStoreApps(this SteamApiClient client, SteamStoreListingContainer lastItem, CancellationToken token = default)
+        public static SteamStoreListingContainer GetStoreApps<T>(this T client, SteamStoreListingContainer lastItem, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamStoreListingRequest
             {
@@ -149,7 +150,7 @@ namespace DragonFruit.Link.Library.Extensions
         /// <param name="maxItems">Max number of entries to be returned</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns>Up-to <see cref="maxItems"/> games and apps being sold on the Steam store</returns>
-        public static SteamStoreListingContainer GetStoreApps(this SteamApiClient client, uint maxItems, SteamStoreListingContainer lastItem, CancellationToken token = default)
+        public static SteamStoreListingContainer GetStoreApps<T>(this T client, uint maxItems, SteamStoreListingContainer lastItem, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamStoreListingRequest
             {

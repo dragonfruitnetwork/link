@@ -4,6 +4,7 @@
 using DragonFruit.Link.Game.Requests;
 using DragonFruit.Link.Game.Responses;
 using System.Threading;
+using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.Game.Extensions
 {
@@ -16,7 +17,7 @@ namespace DragonFruit.Link.Game.Extensions
         /// <param name="appId">The App Id to get the schema for</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         /// <returns></returns>
-        public static SteamGameSchemaContainer GetSchemaForGame(this SteamApiClient client, uint appId, CancellationToken token = default)
+        public static SteamGameSchemaContainer GetSchemaForGame<T>(this T client, uint appId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamGameSchemaRequest(appId);
             return client.Perform<SteamGameSchemaResponse>(request, token)?.Schema;

@@ -3,6 +3,7 @@
 
 using System.Net.Http;
 using System.Threading;
+using DragonFruit.Common.Data;
 using DragonFruit.Link.Servers.Requests;
 
 namespace DragonFruit.Link.Servers.Extensions
@@ -16,7 +17,7 @@ namespace DragonFruit.Link.Servers.Extensions
         /// <param name="serverId">The Steam Id of the game server</param>
         /// <param name="newMemo">The new memo to set</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
-        public static void ChangeServerMemo(this SteamApiClient client, ulong serverId, string newMemo, CancellationToken token = default)
+        public static void ChangeServerMemo<T>(this T client, ulong serverId, string newMemo, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             HttpResponseMessage response = null;
 
