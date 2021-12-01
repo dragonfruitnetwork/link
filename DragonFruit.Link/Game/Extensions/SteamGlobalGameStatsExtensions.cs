@@ -14,6 +14,7 @@ namespace DragonFruit.Link.Game.Extensions
 {
     public static class SteamGlobalGameStatsExtensions
     {
+        // todo make a strongly-typed response and add async overload
         public static Dictionary<string, double> GetGlobalGameStats(this ApiClient client, uint appId, IEnumerable<string> stats, CancellationToken token = default)
         {
             var request = new SteamGlobalGameStatsRequest(appId, stats);
