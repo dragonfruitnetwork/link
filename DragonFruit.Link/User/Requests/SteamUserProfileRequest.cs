@@ -6,7 +6,7 @@ using DragonFruit.Link.Exceptions;
 
 namespace DragonFruit.Link.User.Requests
 {
-    public class SteamUserProfileRequest : SteamCompiledSteamIdRequest
+    public class SteamUserProfileRequest : SteamCompiledIdRequest
     {
         public override string Interface => "ISteamUser";
         public override string InterfaceMethod => "GetPlayerSummaries";
