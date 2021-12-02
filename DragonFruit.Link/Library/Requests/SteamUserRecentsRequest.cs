@@ -19,12 +19,6 @@ namespace DragonFruit.Link.Library.Requests
             Id = steamId;
         }
 
-        public SteamUserRecentsRequest(ulong steamId, ushort maxEntries)
-        {
-            Id = steamId;
-            Limit = maxEntries;
-        }
-
         [QueryParameter("steamid")]
         public ulong Id { get; set; }
 
