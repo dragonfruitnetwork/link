@@ -16,7 +16,6 @@ namespace DragonFruit.Link.Store
         public override string InterfaceMethod => string.Empty;
 
         public override int MethodVersion => 0;
-
         public override bool RequireApiKey => false;
 
         public abstract string RequestPath { get; }
