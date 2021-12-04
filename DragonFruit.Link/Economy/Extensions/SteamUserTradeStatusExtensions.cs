@@ -4,6 +4,7 @@
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Economy.Responses;
 using System.Threading;
+using System.Threading.Tasks;
 using DragonFruit.Common.Data;
 
 namespace DragonFruit.Link.Economy.Extensions
@@ -21,6 +22,19 @@ namespace DragonFruit.Link.Economy.Extensions
         {
             var request = new SteamUserTradeStatusRequest(tradeId);
             return client.Perform<SteamUserTradeStatusResponse>(request, token)?.History;
+        }
+
+        /// <summary>
+        /// Get the trade history for the API key owner's account
+        /// </summary>
+        /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
+        /// <param name="tradeId">Id of trade to return</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
+        /// <returns>Returns the trade and descriptions of the items included in said trade</returns>
+        public static async Task<SteamUserTradeHistoryContainer> GetTradeStatusAsync<T>(this T client, ulong tradeId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
+        {
+            var request = new SteamUserTradeStatusRequest(tradeId);
+            return (await client.PerformAsync<SteamUserTradeStatusResponse>(request, token).ConfigureAwait(false))?.History;
         }
     }
 }

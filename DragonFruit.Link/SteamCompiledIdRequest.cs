@@ -11,14 +11,14 @@ namespace DragonFruit.Link
     /// <summary>
     /// Base for a <see cref="SteamApiRequest"/> where one of the parameters is a comma-separated string of <see cref="Ids"/>
     /// </summary>
-    public abstract class SteamCompiledSteamIdRequest : SteamApiRequest
+    public abstract class SteamCompiledIdRequest : SteamApiRequest
     {
-        protected SteamCompiledSteamIdRequest(ulong user)
+        protected SteamCompiledIdRequest(ulong user)
         {
             Ids = new[] { user };
         }
 
-        protected SteamCompiledSteamIdRequest(IEnumerable<ulong> users)
+        protected SteamCompiledIdRequest(IEnumerable<ulong> users)
         {
             Ids = users;
         }

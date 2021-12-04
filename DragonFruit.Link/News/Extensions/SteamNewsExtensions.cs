@@ -6,6 +6,7 @@ using DragonFruit.Link.News.Objects;
 using DragonFruit.Link.News.Requests;
 using DragonFruit.Link.News.Responses;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace DragonFruit.Link.News.Extensions
 {
@@ -19,21 +20,14 @@ namespace DragonFruit.Link.News.Extensions
         /// </summary>
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="appId">The AppId to get the news for</param>
-        /// <returns>A <see cref="SteamNewsContainer"/> containing the 30 most recent <see cref="SteamNewsItem"/>s</returns>
-        public static SteamNewsContainer GetAppNews(this ApiClient client, uint appId) =>
-            GetAppNews(client, appId, 30);
-
-        /// <summary>
-        /// Creates and performs a <see cref="SteamNewsRequest"/> using the provided options
-        /// </summary>
-        /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
-        /// <param name="appId">The AppId to get the news for</param>
         /// <param name="max">The max number of news entries to return</param>
-        /// <returns>A <see cref="SteamNewsContainer"/> containing up-to the <see cref="max"/> number of <see cref="SteamNewsItem"/>s</returns>
-        public static SteamNewsContainer GetAppNews(this ApiClient client, uint appId, uint max)
+        /// <param name="descriptionLength">The max chars the body should contain</param>
+        /// <param name="token">Optional cancellation token to stop the request</param>
+        /// <returns>A <see cref="SteamNewsContainer"/> containing up-to the <see cref="max"/> number of <see cref="SteamNewsItem"/> with each content entry being no more than <see cref="descriptionLength"/> chars</returns>
+        public static SteamNewsContainer GetAppNews(this ApiClient client, uint appId, uint max = 30, uint? descriptionLength = null, CancellationToken token = default)
         {
-            var request = new SteamNewsRequest(appId, max);
-            return GetAppNews(client, request);
+            var request = new SteamNewsRequest(appId, max, descriptionLength);
+            return client.Perform<SteamNewsResponse>(request, token)?.Container;
         }
 
         /// <summary>
@@ -43,23 +37,12 @@ namespace DragonFruit.Link.News.Extensions
         /// <param name="appId">The AppId to get the news for</param>
         /// <param name="max">The max number of news entries to return</param>
         /// <param name="descriptionLength">The max chars the body should contain</param>
+        /// <param name="token">Optional cancellation token to stop the request</param>
         /// <returns>A <see cref="SteamNewsContainer"/> containing up-to the <see cref="max"/> number of <see cref="SteamNewsItem"/> with each content entry being no more than <see cref="descriptionLength"/> chars</returns>
-        public static SteamNewsContainer GetAppNews(this ApiClient client, uint appId, uint max, uint descriptionLength)
+        public static async Task<SteamNewsContainer> GetAppNewsAsync(this ApiClient client, uint appId, uint max = 30, uint? descriptionLength = null, CancellationToken token = default)
         {
             var request = new SteamNewsRequest(appId, max, descriptionLength);
-            return GetAppNews(client, request);
-        }
-
-        /// <summary>
-        /// Performs a <see cref="SteamNewsRequest"/> and deserialises it to the underlying <see cref="SteamNewsContainer"/>
-        /// </summary>
-        /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
-        /// <param name="request">The <see cref="SteamNewsRequest"/> to perform</param>
-        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
-        /// <returns>A <see cref="SteamNewsContainer"/> containing the <see cref="SteamNewsItem"/>s</returns>
-        private static SteamNewsContainer GetAppNews(this ApiClient client, SteamNewsRequest request, CancellationToken token = default)
-        {
-            return client.Perform<SteamNewsResponse>(request, token)?.Container;
+            return (await client.PerformAsync<SteamNewsResponse>(request, token).ConfigureAwait(false))?.Container;
         }
     }
 }

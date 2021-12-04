@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DragonFruit.Link.User.Requests
 {
-    public class SteamUserRestrictionsRequest : SteamCompiledSteamIdRequest
+    public class SteamUserRestrictionsRequest : SteamCompiledIdRequest
     {
         public override string Interface => "ISteamUser";
         public override string InterfaceMethod => "GetPlayerBans";

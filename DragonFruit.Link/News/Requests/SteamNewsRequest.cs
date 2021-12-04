@@ -19,20 +19,9 @@ namespace DragonFruit.Link.News.Requests
 
         public override bool RequireApiKey => false;
 
-        public SteamNewsRequest(uint appId)
+        public SteamNewsRequest(uint appId, uint? limit, uint? maxDescriptionLength)
         {
             AppId = appId;
-        }
-
-        public SteamNewsRequest(uint appId, uint limit)
-            : this(appId)
-        {
-            Count = limit;
-        }
-
-        public SteamNewsRequest(uint appId, uint limit, uint maxDescriptionLength)
-            : this(appId)
-        {
             Count = limit;
             MaxDescriptionLength = maxDescriptionLength;
         }

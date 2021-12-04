@@ -29,7 +29,7 @@ namespace DragonFruit.Link.Game.Responses
     {
         [JsonProperty("stats")]
         public IEnumerable<SteamGameMetadataObject> Stats { get; set; }
-        
+
         [JsonProperty("achievements")]
         public IEnumerable<SteamGameMetadataObject> Achievements { get; set; }
     }
