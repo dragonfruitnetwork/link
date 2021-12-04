@@ -1,12 +1,12 @@
-﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
-// Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
+﻿// DragonFruit Link Copyright (C) DragonFruit Network <inbox@dragonfruit.network>
+// Licensed under MIT. Please refer to the LICENCE file for more info
 
-using DragonFruit.Link.Economy.Objects;
-using DragonFruit.Link.Economy.Requests;
-using DragonFruit.Link.Economy.Responses;
 using System.Threading;
 using System.Threading.Tasks;
 using DragonFruit.Common.Data;
+using DragonFruit.Link.Economy.Objects;
+using DragonFruit.Link.Economy.Requests;
+using DragonFruit.Link.Economy.Responses;
 
 namespace DragonFruit.Link.Economy.Extensions
 {

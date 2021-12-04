@@ -1,5 +1,5 @@
-﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
-// Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
+﻿// DragonFruit Link Copyright (C) DragonFruit Network <inbox@dragonfruit.network>
+// Licensed under MIT. Please refer to the LICENCE file for more info
 
 using System.Collections.Generic;
 using DragonFruit.Link.Enums;
@@ -103,13 +103,13 @@ namespace DragonFruit.Link.Store.Objects
             }
         }
 
-        #nullable enable
+#nullable enable
 
         public SteamStoreAppRequirements? WindowsRequirements { get; set; }
         public SteamStoreAppRequirements? LinuxRequirements { get; set; }
         public SteamStoreAppRequirements? MacRequirements { get; set; }
 
-        #nullable restore
+#nullable restore
 
         #endregion
 
@@ -131,12 +131,12 @@ namespace DragonFruit.Link.Store.Objects
         [JsonProperty("package_groups")]
         public IEnumerable<SteamStoreAppListingPackages> PackageGroups { get; set; }
 
-        #nullable enable
+#nullable enable
 
         [JsonProperty("dlc")]
         public IEnumerable<uint>? AvailableDLCs { get; set; }
 
-        #nullable restore
+#nullable restore
 
         #endregion
 
@@ -155,12 +155,12 @@ namespace DragonFruit.Link.Store.Objects
         [JsonProperty("screenshots")]
         public IEnumerable<SteamStoreAppListingScreenshot> Screenshots { get; set; }
 
-        #nullable enable
+#nullable enable
 
         [JsonProperty("movies")]
         public IEnumerable<SteamStoreAppListingVideo>? Videos { get; set; }
 
-        #nullable restore
+#nullable restore
 
         #endregion
 
@@ -173,7 +173,7 @@ namespace DragonFruit.Link.Store.Objects
         [JsonProperty("release_date")]
         public SteamStoreAppListingReleaseInfo Release { get; set; }
 
-        #nullable enable
+#nullable enable
 
         [JsonProperty("legal_notice")]
         public string LegalNotice { get; set; }
@@ -193,7 +193,7 @@ namespace DragonFruit.Link.Store.Objects
         [JsonProperty("content_descriptors")]
         public SteamStoreAppListingContentInfo? ContentDescriptors { get; set; }
 
-        #nullable restore
+#nullable restore
     }
 
     public class SteamStoreAppListingRecommendationsContainer
