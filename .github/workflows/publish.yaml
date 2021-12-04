@@ -19,6 +19,9 @@ jobs:
       - name: Setup PowerShell Policy
         run: Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
         
+      - name: Install .NET 6
+        run: choco install dotnet-sdk
+        
       - name: Download Publish Script
         run: powershell Invoke-WebRequest -Uri "https://raw.githubusercontent.com/dragonfruitnetwork/publish-script/main/nuget.ps1" -OutFile ".\nuget.ps1"
 
