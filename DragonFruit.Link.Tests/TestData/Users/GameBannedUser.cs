@@ -7,23 +7,23 @@ namespace DragonFruit.Link.Tests.TestData.Users
 {
     public class SteamGameBannedUser : ITestUser
     {
-        public ulong Id => Convert.ToUInt64("1100001001CF5F9", 16);
+        public ulong Id => Convert.ToUInt64("110000140F717BB", 16);
 
         public string CustomUrlSegment => string.Empty;
 
         public string Url => $"https://steamcommunity.com/profiles/{Id}";
 
-        public int MinBadges => 110;
+        public int MinBadges => 40;
 
-        public int MinLevel => 70;
+        public int MinLevel => 45;
 
-        public uint MinGames => 70;
+        public uint MinGames => 55;
 
-        public uint MinKillsCounterStrike => 2000;
+        public uint MinKillsCounterStrike => 1500;
 
-        public uint MinKillsTeamFortress => 600;
+        public uint MinKillsTeamFortress => 1;
 
-        public bool VACBanned => false;
+        public bool VACBanned => true;
 
         public bool CommunityBanned => false;
 

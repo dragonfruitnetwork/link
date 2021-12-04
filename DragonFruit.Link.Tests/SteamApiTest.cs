@@ -28,6 +28,10 @@ namespace DragonFruit.Link.Tests
             ? Environment.GetEnvironmentVariable(VariableName, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(VariableName, EnvironmentVariableTarget.Machine) ?? Environment.GetEnvironmentVariable(VariableName)
             : Environment.GetEnvironmentVariable(VariableName));
 
-        protected static IEnumerable<ITestUser> Users => _testUsers ??= new ITestUser[] { new SteamCleanUser(), new SteamGameBannedUser() };
+        protected static IEnumerable<ITestUser> Users => _testUsers ??= new ITestUser[]
+        {
+            new SteamCleanUser(),
+            new SteamGameBannedUser()
+        };
     }
 }
