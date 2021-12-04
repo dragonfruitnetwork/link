@@ -1,5 +1,5 @@
-﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
-// Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
+﻿// DragonFruit Link Copyright (C) DragonFruit Network <inbox@dragonfruit.network>
+// Licensed under MIT. Please refer to the LICENCE file for more info
 
 using System.Linq;
 using DragonFruit.Link.User.Extensions;
@@ -13,7 +13,7 @@ namespace DragonFruit.Link.Tests.User
         [TestMethod]
         public void TestVanityLinkResolve()
         {
-            foreach(var user in Users.Where(x => !string.IsNullOrWhiteSpace(x.CustomUrlSegment)))
+            foreach (var user in Users.Where(x => !string.IsNullOrWhiteSpace(x.CustomUrlSegment)))
             {
                 var resolvedId = Client.ResolveVanityUrl(user.CustomUrlSegment);
 
