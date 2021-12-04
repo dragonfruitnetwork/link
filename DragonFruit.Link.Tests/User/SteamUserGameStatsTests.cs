@@ -28,7 +28,7 @@ namespace DragonFruit.Link.Tests.User
             {
                 var stats = Client.GetUserGameStats(SteamApps.TeamFortress2, user.Id);
 
-                Assert.IsTrue(stats.Stats.Count() > 450);
+                Assert.IsTrue(stats.Stats.Count() > 100);
                 Assert.IsTrue(stats.Stats.Single(x => x.Name == "Scout.accum.iNumberOfKills").Value > user.MinKillsTeamFortress);
             }
         }
