@@ -25,6 +25,7 @@ jobs:
         run: dotnet restore
 
       - name: InspectCode
+        timeout-minutes: 5
         run: dotnet jb inspectcode ${{github.workspace}}/DragonFruit.Link.sln --output=${{github.workspace}}/inspectcodereport.xml --cachesDir=${{github.workspace}}/inspectcode --verbosity=WARN --no-build
 
       - name: NVika
