@@ -3,7 +3,7 @@
 [![DragonFruit Discord](https://img.shields.io/discord/482528405292843018?label=Discord&style=popout)](https://discord.gg/VA26u5Z)
 
 ## Overview
-DragonFruit Link is a Steam API library aimed at making it easier to utilise the facilities Steam provide (and document *really* badly). Licensed under [GNU GPLv3]([https://www.gnu.org/licenses/gpl-3.0.en.html](https://www.gnu.org/licenses/gpl-3.0.en.html)), the library is completely free to use. 
+DragonFruit Link is a Steam API library aimed at making it easier to utilise the facilities Steam provide (and document *really* badly). Licensed under MIT, the library is completely free to use. 
 
 ## Structure
 The codebase adopts a structure that is easy to follow and makes sense. Each of the API's "function" is categorised into one of 7 Categories:
