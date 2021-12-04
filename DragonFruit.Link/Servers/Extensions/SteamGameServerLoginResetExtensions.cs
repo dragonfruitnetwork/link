@@ -4,7 +4,9 @@
 using DragonFruit.Link.Servers.Requests;
 using DragonFruit.Link.Servers.Responses;
 using System.Threading;
+using System.Threading.Tasks;
 using DragonFruit.Common.Data;
+using DragonFruit.Link.Servers.Objects;
 
 namespace DragonFruit.Link.Servers.Extensions
 {
@@ -16,11 +18,24 @@ namespace DragonFruit.Link.Servers.Extensions
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
         /// <param name="serverId">The Steam Id of the game server</param>
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
-        /// <returns>The new login token</returns>
-        public static string ResetServerLoginToken<T>(this T client, ulong serverId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
+        /// <returns>The <see cref="SteamGameServerAccountInfo"/> with the new login token</returns>
+        public static SteamGameServerAccountInfo ResetServerLoginToken<T>(this T client, ulong serverId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
             var request = new SteamGameServerLoginResetRequest(serverId);
-            return client.Perform<SteamGameServerLoginResetResponse>(request, token)?.AccountInfo.ServerToken;
+            return client.Perform<SteamGameServerLoginResetResponse>(request, token)?.AccountInfo;
+        }
+
+        /// <summary>
+        /// Reset a game servers' login token
+        /// </summary>
+        /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
+        /// <param name="serverId">The Steam Id of the game server</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
+        /// <returns>The <see cref="SteamGameServerAccountInfo"/> with the new login token</returns>
+        public static async Task<SteamGameServerAccountInfo> ResetServerLoginTokenAsync<T>(this T client, ulong serverId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
+        {
+            var request = new SteamGameServerLoginResetRequest(serverId);
+            return (await client.PerformAsync<SteamGameServerLoginResetResponse>(request, token).ConfigureAwait(false))?.AccountInfo;
         }
     }
 }

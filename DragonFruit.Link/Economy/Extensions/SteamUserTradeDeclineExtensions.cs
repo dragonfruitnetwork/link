@@ -1,8 +1,8 @@
 ﻿// DragonFruit Link API Copyright 2020 (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under the GNU GPLv3 License. Refer to the license.md file at the root of the repo for more info
 
-using System.Net.Http;
 using System.Threading;
+using System.Threading.Tasks;
 using DragonFruit.Common.Data;
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Exceptions;
@@ -12,6 +12,17 @@ namespace DragonFruit.Link.Economy.Extensions
     public static class SteamUserTradeDeclineExtensions
     {
         /// <summary>
+        /// Cancel a trade offer the API Key owner has made
+        /// </summary>
+        /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
+        /// <param name="offerId">The id of the offer to cancel</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
+        public static void CancelTrade<T>(this T client, ulong offerId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
+        {
+            PerformRequestValidateCode(client, new SteamUserTradeCancelRequest(offerId));
+        }
+
+        /// <summary>
         /// Decline a trade offer sent to the API Key owner
         /// </summary>
         /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
@@ -19,21 +30,48 @@ namespace DragonFruit.Link.Economy.Extensions
         /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
         public static void DeclineTrade<T>(this T client, ulong offerId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
         {
-            var request = new SteamUserTradeDeclineRequest(offerId);
-            HttpResponseMessage result = null;
+            PerformRequestValidateCode(client, new SteamUserTradeDeclineRequest(offerId));
+        }
 
-            try
+        /// <summary>
+        /// Cancel a trade offer the API Key owner has made
+        /// </summary>
+        /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
+        /// <param name="offerId">The id of the offer to cancel</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
+        public static Task CancelTradeAsync<T>(this T client, ulong offerId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
+        {
+            return PerformRequestValidateCodeAsync(client, new SteamUserTradeCancelRequest(offerId));
+        }
+
+        /// <summary>
+        /// Decline a trade offer sent to the API Key owner
+        /// </summary>
+        /// <param name="client">The <see cref="SteamApiClient"/> to use</param>
+        /// <param name="offerId">The id of the offer to decline</param>
+        /// <param name="token">The <see cref="CancellationToken"/> to pass when performing the request</param>
+        public static Task DeclineTradeAsync<T>(this T client, ulong offerId, CancellationToken token = default) where T : ApiClient, ISteamApiClient
+        {
+            return PerformRequestValidateCodeAsync(client, new SteamUserTradeDeclineRequest(offerId));
+        }
+
+        private static void PerformRequestValidateCode(ApiClient client, ApiRequest request)
+        {
+            using var response = client.Perform(request);
+
+            if (!response.IsSuccessStatusCode)
             {
-                result = client.Perform(request, token);
-
-                if (!result.IsSuccessStatusCode)
-                {
-                    throw new SteamRequestFailedException();
-                }
+                throw new SteamRequestFailedException();
             }
-            finally
+        }
+
+        private static async Task PerformRequestValidateCodeAsync(ApiClient client, ApiRequest request)
+        {
+            using var response = await client.PerformAsync(request).ConfigureAwait(false);
+
+            if (!response.IsSuccessStatusCode)
             {
-                result?.Dispose();
+                throw new SteamRequestFailedException();
             }
         }
     }
