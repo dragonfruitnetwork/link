@@ -19,7 +19,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DragonFruit.Common.Data" Version="2021.1130.58-beta"/>
+        <PackageReference Include="DragonFruit.Data" Version="2021.1216.4-beta"/>
+        <PackageReference Include="DragonFruit.Data.Serializers.Newtonsoft" Version="2021.1216.4-beta"/>
     </ItemGroup>
 
 </Project>

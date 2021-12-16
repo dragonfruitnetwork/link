@@ -2,8 +2,8 @@
 // Licensed under MIT. Please refer to the LICENCE file for more info
 
 using System.Collections.Generic;
-using DragonFruit.Common.Data;
-using DragonFruit.Common.Data.Parameters;
+using DragonFruit.Data;
+using DragonFruit.Data.Parameters;
 
 // ReSharper disable InconsistentNaming
 

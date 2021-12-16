@@ -4,7 +4,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
+using DragonFruit.Data;
 using DragonFruit.Link.Servers.Requests;
 
 namespace DragonFruit.Link.Servers.Extensions

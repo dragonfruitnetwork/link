@@ -1,8 +1,8 @@
 ﻿// DragonFruit Link Copyright (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under MIT. Please refer to the LICENCE file for more info
 
-using DragonFruit.Common.Data;
-using DragonFruit.Common.Data.Parameters;
+using DragonFruit.Data;
+using DragonFruit.Data.Parameters;
 
 namespace DragonFruit.Link.Economy.Requests
 {
