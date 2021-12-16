@@ -3,7 +3,7 @@
 
 using System.Threading;
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
+using DragonFruit.Data;
 using DragonFruit.Link.Exceptions;
 using DragonFruit.Link.Store.Objects;
 using DragonFruit.Link.Store.Requests;

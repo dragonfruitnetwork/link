@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
+using DragonFruit.Data;
 using DragonFruit.Link.Game.Objects;
 using DragonFruit.Link.Game.Requests;
 using DragonFruit.Link.Game.Responses;

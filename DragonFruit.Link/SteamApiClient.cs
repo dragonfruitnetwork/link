@@ -1,8 +1,8 @@
 ﻿// DragonFruit Link Copyright (C) DragonFruit Network <inbox@dragonfruit.network>
 // Licensed under MIT. Please refer to the LICENCE file for more info
 
-using DragonFruit.Common.Data;
-using DragonFruit.Common.Data.Serializers;
+using DragonFruit.Data;
+using DragonFruit.Data.Serializers.Newtonsoft;
 
 namespace DragonFruit.Link
 {

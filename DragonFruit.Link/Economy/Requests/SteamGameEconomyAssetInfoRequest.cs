@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DragonFruit.Common.Data.Parameters;
+using DragonFruit.Data.Parameters;
 
 namespace DragonFruit.Link.Economy.Requests
 {

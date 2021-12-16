@@ -2,7 +2,7 @@
 // Licensed under MIT. Please refer to the LICENCE file for more info
 
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
+using DragonFruit.Data;
 using DragonFruit.Link.Store.Requests;
 using DragonFruit.Link.Store.Responses;
 

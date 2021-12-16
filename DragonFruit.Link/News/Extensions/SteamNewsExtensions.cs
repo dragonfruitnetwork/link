@@ -3,7 +3,7 @@
 
 using System.Threading;
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
+using DragonFruit.Data;
 using DragonFruit.Link.News.Objects;
 using DragonFruit.Link.News.Requests;
 using DragonFruit.Link.News.Responses;

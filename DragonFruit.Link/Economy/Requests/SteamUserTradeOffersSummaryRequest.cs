@@ -2,7 +2,7 @@
 // Licensed under MIT. Please refer to the LICENCE file for more info
 
 using System;
-using DragonFruit.Common.Data.Parameters;
+using DragonFruit.Data.Parameters;
 
 namespace DragonFruit.Link.Economy.Requests
 {

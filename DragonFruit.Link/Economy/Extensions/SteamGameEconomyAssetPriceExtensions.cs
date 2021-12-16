@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
+using DragonFruit.Data;
 using DragonFruit.Link.Economy.Objects;
 using DragonFruit.Link.Economy.Requests;
 using DragonFruit.Link.Economy.Responses;

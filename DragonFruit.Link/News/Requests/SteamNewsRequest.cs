@@ -3,8 +3,8 @@
 
 using System;
 using System.Collections.Generic;
-using DragonFruit.Common.Data;
-using DragonFruit.Common.Data.Parameters;
+using DragonFruit.Data;
+using DragonFruit.Data.Parameters;
 
 #nullable enable
 
