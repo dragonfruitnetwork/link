@@ -4,6 +4,7 @@
 using System;
 using DragonFruit.Data;
 using DragonFruit.Data.Parameters;
+using DragonFruit.Data.Requests;
 using DragonFruit.Link.Exceptions;
 using Newtonsoft.Json;
 
@@ -12,7 +13,7 @@ using Newtonsoft.Json;
 namespace DragonFruit.Link
 {
     [JsonObject(MemberSerialization.OptIn)]
-    public abstract class SteamApiRequest : ApiRequest
+    public abstract class SteamApiRequest : ApiRequest, IRequestExecutingCallback
     {
         protected override Methods Method => Methods.Get;
         protected override bool RequireAuth => false; // this only checks headers, ours is in the query
@@ -33,7 +34,7 @@ namespace DragonFruit.Link
         [QueryParameter("format")]
         protected string OutputFormat => "json";
 
-        protected override void OnRequestExecuting(ApiClient client)
+        public void OnRequestExecuting(ApiClient client)
         {
             if (RequireApiKey && string.IsNullOrEmpty(ApiKey))
             {
